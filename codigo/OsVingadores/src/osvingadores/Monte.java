@@ -1,7 +1,5 @@
 package OsVingadores;
 
-import OsVigadores.Carta;
-
 public class Monte {
 	protected Carta _cartas;
 	public Mesa _unnamed_Mesa_;
