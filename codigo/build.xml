@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build">
+	<path id="build.classpath">
+		<pathelement location="classes"/>
+	</path>
+	<target name="init">
+		<mkdir dir="classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+	<target depends="init" name="build">
+		<javac srcdir="." destdir="classes" source="1.5" target="1.5" fork="yes">
+			<classpath refid="build.classpath"/>
+			<include name="OsVingadores/TipoPersonagem.java"/>
+			<include name="OsVingadores/Personagem.java"/>
+			<include name="OsVingadores/Jogador.java"/>
+			<include name="OsVingadores/JFrame.java"/>
+			<include name="OsVingadores/JButton.java"/>
+			<include name="OsVingadores/JMenu.java"/>
+			<include name="OsVingadores/JList.java"/>
+			<include name="OsVingadores/JMenuItem.java"/>
+			<include name="OsVingadores/JMenuBar.java"/>
+			<include name="OsVingadores/JPanel.java"/>
+			<include name="OsVingadores/TipoArtefato.java"/>
+			<include name="OsVingadores/Artefato.java"/>
+			<include name="OsVingadores/JOptionPane.java"/>
+			<include name="OsVingadores/InterfaceMesa.java"/>
+			<include name="OsVingadores/AtorJogador.java"/>
+			<include name="OsVingadores/Main.java"/>
+			<include name="OsVingadores/Jogada.java"/>
+			<include name="OsVingadores/Proxy.java"/>
+			<include name="OsVingadores/OuvidorProxy.java"/>
+			<include name="OsVingadores/AtorNetGames.java"/>
+			<include name="OsVingadores/ControladorJogo.java"/>
+			<include name="OsVingadores/Mesa.java"/>
+			<include name="OsVingadores/Monte.java"/>
+			<include name="OsVingadores/Carta.java"/>
+		</javac>
+	</target>
+</project>
