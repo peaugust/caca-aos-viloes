@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public class Mesa implements Jogada {
 	protected Monte _monteCompra;

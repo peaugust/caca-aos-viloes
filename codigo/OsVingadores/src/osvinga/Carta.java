@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public class Carta {
 	protected String nome;

@@ -1,6 +1,6 @@
-package osvingadores.rede;
+package osvinga.rede;
 
-import osvingadores.ControladorJogo;
+import osvinga.ControladorJogo;
 import javax.swing.JOptionPane;
 
 import br.ufsc.inf.leobr.cliente.Jogada;

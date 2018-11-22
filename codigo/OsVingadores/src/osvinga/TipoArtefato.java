@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public enum TipoArtefato {
     

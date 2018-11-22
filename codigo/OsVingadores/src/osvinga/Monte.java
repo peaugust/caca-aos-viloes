@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 import java.util.ArrayList;
 import java.util.Random;

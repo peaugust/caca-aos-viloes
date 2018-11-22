@@ -1,6 +1,7 @@
-package osvingadores;
+package osvinga;
 
 public class AtorJogador {
+
     //Atributos:
     public InterfaceMesa interfaceMesa;
     public ControladorJogo controladorJogo;
@@ -10,7 +11,7 @@ public class AtorJogador {
         this.interfaceMesa = new InterfaceMesa();
         this.controladorJogo = controladorJogo;
     }
-    
+
     //Metodos:
     public InterfaceMesa getInterfaceMesa() {
         return interfaceMesa;

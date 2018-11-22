@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public class Personagem extends Carta {
     

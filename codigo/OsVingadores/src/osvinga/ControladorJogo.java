@@ -1,4 +1,4 @@
-package osvingadores;
+package osvinga;
 
 public class ControladorJogo {
 	protected Mesa _mesa;

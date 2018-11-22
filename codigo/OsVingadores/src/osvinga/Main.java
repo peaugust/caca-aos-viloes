@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public class Main {
 	public ControladorJogo _unnamed_ControladorJogo_;

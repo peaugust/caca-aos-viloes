@@ -1,13 +1,14 @@
-package OsVingadores;
+package osvinga;
 
 public class Jogador {
+
     //Atributos:
     protected String nome;
     protected int pontuacao;
     protected Monte mao;
     protected Monte viloesCapturados;
     protected boolean jogadorDaVez;
-    
+
     //Construtor:
     public Jogador() {
         this.nome = "";
@@ -16,7 +17,7 @@ public class Jogador {
         this.viloesCapturados = new Monte();
         this.jogadorDaVez = false;
     }
-    
+
     //Metodos:
     public boolean ehSeuNome(String nome) {
         return this.nome.equals(nome);
@@ -32,7 +33,7 @@ public class Jogador {
 
     public void retirarConjuntoDaMao(Monte conjuntoDeHerois) {
         for (Carta carta : conjuntoDeHerois.getCartas()) {
-            this.mao.removerCarta( carta );
+            this.mao.removerCarta(carta);
         }
     }
 
@@ -41,7 +42,7 @@ public class Jogador {
     }
 
     public boolean temPontuacaoMaior(int pontuacao) {
-        if (this.pontuacao > pontuacao)  {
+        if (this.pontuacao > pontuacao) {
             return true;
         } else {
             return false;
@@ -92,5 +93,5 @@ public class Jogador {
     public void setViloesCapturados(Monte viloesCapturados) {
         this.viloesCapturados = viloesCapturados;
     }
-    
+
 }

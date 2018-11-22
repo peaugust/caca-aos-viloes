@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvinga;
 
 public class Proxy {
 	public AtorNetGames _unnamed_AtorNetGames_;
