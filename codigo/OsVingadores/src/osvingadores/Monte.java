@@ -1,6 +1,7 @@
 package OsVingadores;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Monte {
 
@@ -10,7 +11,7 @@ public class Monte {
         this.cartas = new ArrayList();
     }
 
-    public ArrayList getCartas() {
+    public ArrayList<Carta> getCartas() {
         return cartas;
     }
 
@@ -45,5 +46,12 @@ public class Monte {
 
     public Carta removerCarta(int index) {
         return this.cartas.remove(index);
+    }
+    
+    public Carta removerCartaAleatoriamente() {
+        Random random = new Random();
+        int indexAleatorio = random.nextInt();
+        
+        return this.cartas.remove(indexAleatorio);
     }
 }
