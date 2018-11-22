@@ -1,13 +1,12 @@
-package OsVingadores;
+package osvingadores;
 
 public class ControladorJogo {
 	protected Mesa _mesa;
 	protected String _nomeJogador;
 	protected boolean _conectado;
-	public AtorJogador _unnamed_AtorJogador_;
-	public Main _unnamed_Main_;
-	public Mesa _unnamed_Mesa_;
-	public AtorNetGames _unnamed_AtorNetGames_;
+	public AtorJogador _atorJogador_;
+	public Mesa _mesa_;
+	public AtorNetGames _atorNetGames_;
 
 	public int conectar() {
 		throw new UnsupportedOperationException();
