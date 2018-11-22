@@ -1,63 +1,96 @@
 package OsVingadores;
 
 public class Jogador {
-	protected String _nome;
-	protected int _pontuacao;
-	protected Monte _mao;
-	protected Monte _viloesCapturados;
-	protected boolean _jogadorDaVez;
-	public Mesa _unnamed_Mesa_;
-	public Monte _unnamed_Monte_;
+    //Atributos:
+    protected String nome;
+    protected int pontuacao;
+    protected Monte mao;
+    protected Monte viloesCapturados;
+    protected boolean jogadorDaVez;
+    
+    //Construtor:
+    public Jogador() {
+        this.nome = "";
+        this.pontuacao = 0;
+        this.mao = new Monte();
+        this.viloesCapturados = new Monte();
+        this.jogadorDaVez = false;
+    }
+    
+    //Metodos:
+    public boolean ehSeuNome(String nome) {
+        return this.nome.equals(nome);
+    }
 
-	public boolean ehSeuNome(String aNome) {
-		throw new UnsupportedOperationException();
-	}
+    public boolean isJogadorDaVez() {
+        return this.jogadorDaVez;
+    }
 
-	public boolean isJogadorDaVez() {
-		return this._jogadorDaVez;
-	}
+    public void adicionarVilao(Carta vilao) {
+        this.viloesCapturados.adicionarCarta(vilao);
+    }
 
-	public void adicionarVilao(Carta aVilao) {
-		throw new UnsupportedOperationException();
-	}
+    public void retirarConjuntoDaMao(Monte conjuntoDeHerois) {
+        for (Carta carta : conjuntoDeHerois.getCartas()) {
+            this.mao.removerCarta( carta );
+        }
+    }
 
-	public void retirarConjuntoDaMao(Personagem aConjuntoDeHerois) {
-		throw new UnsupportedOperationException();
-	}
+    public int getPontuacao() {
+        return this.pontuacao;
+    }
 
-	public int getPontuacao() {
-		return this._pontuacao;
-	}
+    public boolean temPontuacaoMaior(int pontuacao) {
+        if (this.pontuacao > pontuacao)  {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public boolean temPontuacaoMaior(int aPontuacao) {
-		throw new UnsupportedOperationException();
-	}
+    public void adicionarCartaAMaoDoJogador(Carta carta) {
+        this.mao.adicionarCarta(carta);
+    }
 
-	public void adicionarCartaAMaoDoJogador(Carta aCarta) {
-		throw new UnsupportedOperationException();
-	}
+    public Monte getMao() {
+        return this.mao;
+    }
 
-	public Monte getMao() {
-		return this._mao;
-	}
+    public void setMaoJogador(Monte deck) {
+        this.mao = deck;
+    }
 
-	public void setMaoJogador(Monte aDeck) {
-		throw new UnsupportedOperationException();
-	}
+    public String getNomeJogador() {
+        return this.nome;
+    }
 
-	public String getNomeJogador() {
-		throw new UnsupportedOperationException();
-	}
+    public void setJogadorDaVez(boolean aEhJogadorDaVez) {
+        this.jogadorDaVez = aEhJogadorDaVez;
+    }
 
-	public void setJogadorDaVez(boolean aEhJogadorDaVez) {
-		this._jogadorDaVez = aEhJogadorDaVez;
-	}
+    public Carta removerCartaAleatoriamente() {
+        Carta carta = this.mao.removerCartaAleatoriamente();
+        return carta;
+    }
 
-	public boolean removerCartaAleatoriamente() {
-		throw new UnsupportedOperationException();
-	}
+    public Carta removerVilaoAleatoriamente() {
+        return this.viloesCapturados.removerCartaAleatoriamente();
+    }
 
-	public Carta removerVilaoAleatoriamente() {
-		throw new UnsupportedOperationException();
-	}
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Monte getViloesCapturados() {
+        return viloesCapturados;
+    }
+
+    public void setViloesCapturados(Monte viloesCapturados) {
+        this.viloesCapturados = viloesCapturados;
+    }
+    
 }
