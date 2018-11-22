@@ -1,4 +1,4 @@
-package osvingadores;
+package OsVingadores;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
