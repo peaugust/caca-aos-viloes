@@ -1,90 +1,114 @@
 package OsVingadores;
 
 public class AtorJogador {
-	public InterfaceMesa _unnamed_InterfaceMesa_;
-	public ControladorJogo _unnamed_ControladorJogo_;
+    //Atributos:
+    public InterfaceMesa interfaceMesa;
+    public ControladorJogo controladorJogo;
 
-	public void conectar() {
-		throw new UnsupportedOperationException();
-	}
+    //Construtor:
+    public AtorJogador(ControladorJogo controladorJogo) {
+        this.interfaceMesa = new InterfaceMesa();
+        this.controladorJogo = controladorJogo;
+    }
+    
+    //Metodos:
+    public InterfaceMesa getInterfaceMesa() {
+        return interfaceMesa;
+    }
 
-	public String solictarEnderecoServidor() {
-		throw new UnsupportedOperationException();
-	}
+    public void setInterfaceMesa(InterfaceMesa interfaceMesa) {
+        this.interfaceMesa = interfaceMesa;
+    }
 
-	public String solicitarNomeJogador() {
-		throw new UnsupportedOperationException();
-	}
+    public ControladorJogo getControladorJogo() {
+        return controladorJogo;
+    }
 
-	public void mostrarResultadoConectar(int aResultado) {
-		throw new UnsupportedOperationException();
-	}
+    public void setControladorJogo(ControladorJogo controladorJogo) {
+        this.controladorJogo = controladorJogo;
+    }
 
-	public void iniciarPartida() {
-		throw new UnsupportedOperationException();
-	}
+    public void conectar() {
+        this.controladorJogo.conectar();
+    }
 
-	public void notificarPartidaEmAndamento() {
-		throw new UnsupportedOperationException();
-	}
+    public String solictarEnderecoServidor() {
+        return this.interfaceMesa.solictarEnderecoServidor();
+    }
 
-	public void notificarSucessoIniciarPartida() {
-		throw new UnsupportedOperationException();
-	}
+    public String solicitarNomeJogador() {
+        return this.interfaceMesa.solicitarNomeJogador();
+    }
 
-	public void notificarNaoConectado() {
-		throw new UnsupportedOperationException();
-	}
+    public void mostrarResultadoConectar(int resultado) {
+        this.interfaceMesa.mostrarResultadoConectar(resultado);
+    }
 
-	public void desconectar() {
-		throw new UnsupportedOperationException();
-	}
+    public void iniciarPartida() {
+        this.controladorJogo.iniciarPartida();
+    }
 
-	public void notificarDesconexao(boolean aDesconectou) {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarPartidaEmAndamento() {
+        this.interfaceMesa.notificarPartidaEmAndamento();
+    }
 
-	public void passarTurno() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarSucessoIniciarPartida() {
+        this.interfaceMesa.notificarSucessoIniciarPartida();
+    }
 
-	public boolean solicitarConfirmacaoPassarTurno() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarNaoConectado() {
+        this.interfaceMesa.notificarNaoConectado();
+    }
 
-	public void notificarPassarTurno(boolean aResultado) {
-		throw new UnsupportedOperationException();
-	}
+    public void desconectar() {
+        this.controladorJogo.desconectar();
+    }
 
-	public void capturarVilao() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarDesconexao(boolean desconectou) {
+        this.interfaceMesa.notificarDesconexao(desconectou);
+    }
 
-	public boolean solicitarConfirmacaoCapturarVilao() {
-		throw new UnsupportedOperationException();
-	}
+    public void passarTurno() {
+        this.controladorJogo.passarTurno();
+    }
 
-	public Monte solicitarSelecionarHeroisCapturar() {
-		throw new UnsupportedOperationException();
-	}
+    public boolean solicitarConfirmacaoPassarTurno() {
+        return this.interfaceMesa.solicitarConfirmacaoPassarTurno();
+    }
 
-	public void informarCaputrarVilao(boolean aMensagem) {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarPassarTurno(boolean resultado) {
+        this.interfaceMesa.notificarPassarTurno(resultado);
+    }
 
-	public void atualizarInterface(Mesa aMesa) {
-		throw new UnsupportedOperationException();
-	}
+    public void capturarVilao() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-		throw new UnsupportedOperationException();
-	}
+    public boolean solicitarConfirmacaoCapturarVilao() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void usarJoia(Artefato aCartaJoia) {
-		throw new UnsupportedOperationException();
-	}
+    public Monte solicitarSelecionarHeroisCapturar() {
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean confirmarUtilizacaoJoia() {
-		throw new UnsupportedOperationException();
-	}
+    public void informarCaputrarVilao(boolean aMensagem) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void atualizarInterface(Mesa aMesa) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void usarJoia(Artefato aCartaJoia) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean confirmarUtilizacaoJoia() {
+        throw new UnsupportedOperationException();
+    }
 }
