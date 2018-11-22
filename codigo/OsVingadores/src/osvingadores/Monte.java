@@ -1,32 +1,49 @@
 package OsVingadores;
 
+import java.util.ArrayList;
+
 public class Monte {
-	protected Carta _cartas;
-	public Mesa _unnamed_Mesa_;
-	public Jogador _unnamed_Jogador_;
-	public Carta _unnamed_Carta_;
 
-	public int calcularSomatorioDePoder() {
-		throw new UnsupportedOperationException();
-	}
+    protected ArrayList<Carta> cartas;
 
-	public void removerCarta(Carta aCarta) {
-		throw new UnsupportedOperationException();
-	}
+    public Monte() {
+        this.cartas = new ArrayList();
+    }
 
-	public int tamanhoMonte() {
-		throw new UnsupportedOperationException();
-	}
+    public ArrayList getCartas() {
+        return cartas;
+    }
 
-	public Monte comprarCarta() {
-		throw new UnsupportedOperationException();
-	}
+    public void setCartas(ArrayList cartas) {
+        this.cartas = cartas;
+    }
 
-	public void adicionarCarta(Carta aCarta) {
-		throw new UnsupportedOperationException();
-	}
+    public int calcularSomatorioDePoder() {
+        int somatorio = 0;
+        for (Carta carta : cartas) {
+            somatorio = somatorio + carta.getPoder();
+        }
 
-	public Carta removerCarta(int aIndex) {
-		throw new UnsupportedOperationException();
-	}
+        return somatorio;
+    }
+
+    public void removerCarta(Carta carta) {
+        this.cartas.remove(carta);
+    }
+
+    public int tamanhoMonte() {
+        return this.cartas.size();
+    }
+
+    public Carta comprarCarta() {
+        return this.cartas.remove(this.cartas.size() - 1);
+    }
+
+    public void adicionarCarta(Carta carta) {
+        this.cartas.add(carta);
+    }
+
+    public Carta removerCarta(int index) {
+        return this.cartas.remove(index);
+    }
 }
