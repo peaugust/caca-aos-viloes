@@ -1,4 +1,11 @@
-package osvinga;
+package Osvingadores;
+
+import osvingadores.Monte;
+import osvingadores.Monte;
+import osvingadores.Personagem;
+import osvingadores.Personagem;
+import osvingadores.TipoArtefato;
+import osvingadores.TipoArtefato;
 
 import java.util.ArrayList;
 
