@@ -81,8 +81,15 @@ public class AtorJogador {
         this.interfaceMesa.notificarPassarTurno(resultado);
     }
 
-    public void capturarVilao() {
-        throw new UnsupportedOperationException();
+    public void capturarVilao(Carta vilao) {
+        boolean capturar = this.interfaceMesa.solicitarConfirmacaoCapturarVilao();
+        boolean resultado  = false;
+        if (capturar) {
+            Monte cartasCapturar = this.interfaceMesa.solicitarSelecionarHeroisCapturar();
+            resultado = this.controladorJogo.capturarVilao(cartasCapturar, vilao);
+            this.interfaceMesa.informarCaputrarVilao(resultado);
+        }
+        
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
