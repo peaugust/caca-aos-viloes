@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvingadores;
 
 public class AtorNetGames implements OuvidorProxy {
 	protected Proxy _proxy;

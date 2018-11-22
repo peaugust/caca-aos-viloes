@@ -1,4 +1,4 @@
-package OsVingadores;
+package osvingadores;
 
 public class AtorJogador {
     //Atributos:
