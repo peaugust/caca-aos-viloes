@@ -1,6 +1,19 @@
 package OsVingadores;
 
 public class Personagem extends Carta {
-	protected TipoPersonagem _tipo;
-	public TipoPersonagem _unnamed_TipoPersonagem_;
+    
+    protected TipoPersonagem tipo;
+
+    public Personagem(String nome, int poder, TipoPersonagem tipo) {
+        super(nome,poder);
+        this.tipo = tipo;
+    }
+    
+    public TipoPersonagem getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPersonagem tipo) {
+        this.tipo = tipo;
+    }
 }

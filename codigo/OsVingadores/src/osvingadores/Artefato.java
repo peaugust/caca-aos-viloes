@@ -1,10 +1,22 @@
 package OsVingadores;
 
 public class Artefato extends Carta {
-	protected TipoArtefato _tipo;
-	public TipoArtefato _unnamed_TipoArtefato_;
+    //Atributos:
+	protected TipoArtefato tipo;
 
+        //Construtor:
+    public Artefato(String nome, int poder,TipoArtefato tipo) {
+        super(nome,poder);
+        this.tipo = tipo;
+    }   
+
+    //Metodos:
 	public TipoArtefato getTipo() {
-		return this._tipo;
+            return this.tipo;
 	}
+
+    public void setTipo(TipoArtefato tipo) {
+        this.tipo = tipo;
+    }
+        
 }
