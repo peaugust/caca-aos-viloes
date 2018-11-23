@@ -3,6 +3,7 @@
 -Torcar mao dos jogadores em mesa precisa ser revisado
 -verificarJogadorDoTurno pode ser um diagrama de atividades para metodos
 -Refazer o diagrama verificarOEstadoDoJogo
+-Na interfaceMesa, adicionar os atributos na modelagem
 
 # Pedro
 
