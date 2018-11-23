@@ -58,7 +58,7 @@ public class ControladorJogo {
     }
 
     public boolean getPartidaEmAndamento() {
-        throw new UnsupportedOperationException();
+        return this.mesa.isPartidaEmAndamento();
     }
 
     public boolean desconectar() {
@@ -66,10 +66,20 @@ public class ControladorJogo {
     }
 
     public boolean passarTurno() {
+        
+        boolean ehSeuTurno = this.verificarJogadorDoTurno();
+        
         throw new UnsupportedOperationException();
     }
 
     public boolean verificarJogadorDoTurno() {
+        ArrayList<Jogador> jogadores = this.mesa.getColecaoJogadores();
+        
+        boolean encontrou = false;
+        for (Jogador jogador : jogadores) {
+            encontrou = jogador.ehSeuNome(this.nomeJogador);
+        }
+        
         throw new UnsupportedOperationException();
     }
 
@@ -96,15 +106,15 @@ public class ControladorJogo {
         
     }
 
-    public int calcularSomatorioDePoder(Monte aCartasCapturar) {
-        throw new UnsupportedOperationException();
+    public int calcularSomatorioDePoder(Monte cartasCapturar) {
+        return cartasCapturar.calcularSomatorioDePoder();
     }
 
     public Jogador recuperarInstanciaJogador() {
         throw new UnsupportedOperationException();
     }
 
-    public void receberEstadoDaMesa(Mesa aMesa) {
+    public void receberEstadoDaMesa(Mesa mesa) {
         throw new UnsupportedOperationException();
     }
 
@@ -112,8 +122,8 @@ public class ControladorJogo {
         throw new UnsupportedOperationException();
     }
 
-    public void setMesa(Mesa aMesa) {
-        this.mesa = aMesa;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
     public boolean verificarEstadoJogo() {
@@ -128,15 +138,15 @@ public class ControladorJogo {
         throw new UnsupportedOperationException();
     }
 
-    public void verificarQualArtefato(Artefato aCarta) {
-        throw new UnsupportedOperationException();
+    public TipoArtefato verificarQualArtefato(Artefato carta) {
+        return this.mesa.verificarQualArtefato(carta);
     }
 
     public void atualizarEstadoJogo() {
         throw new UnsupportedOperationException();
     }
 
-    public void enviarJogada(Mesa aMesa) {
+    public void enviarJogada(Mesa mesa) {
         throw new UnsupportedOperationException();
     }
 
