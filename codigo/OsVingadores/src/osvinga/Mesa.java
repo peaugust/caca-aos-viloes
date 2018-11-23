@@ -33,12 +33,10 @@ public class Mesa implements Jogada {
 
     public void removerVilao(Carta vilao) {
         this.monteVilaosAtivos.removerCarta(vilao);
-        //throw new UnsupportedOperationException();
     }
 
     public boolean isJogadorVencedor() {
         return comJogadorVencedor;
-        //throw new UnsupportedOperationException();
     }
 
     public Jogador temJogadorVencedor() {
@@ -57,21 +55,24 @@ public class Mesa implements Jogada {
     }
 
     public Jogador encontrarJogadorVencedor() {
-        Jogador jogadorRef = new Jogador();
-        for (int i = 0; i < 2; i++) {
-            jogadorRef = jogadores.get(i);
+        Jogador jogador1 = this.jogadores.get(0);
+        Jogador jogador2 = this.jogadores.get(1);
+        
+        if (jogador2.temPontuacaoMaior(jogador1.getPontuacao())) {
+            return jogador2;
+        } else {
+            return jogador1;
         }
-        throw new UnsupportedOperationException();
+        
     }
 
-    public TipoArtefato verificarQualArtefato(Artefato aCartaArtefato) {
-        throw new UnsupportedOperationException();
+    public TipoArtefato verificarQualArtefato(Artefato cartaArtefato) {
+        return cartaArtefato.getTipo();
     }
 
     public Carta comprarCartaDoMonteCompra() {
         Carta novaCarta = this.monteCompra.comprarCarta();
         return novaCarta;
-        //throw new UnsupportedOperationException();
     }
 
     public void trocarMaosDosJogadores() {
