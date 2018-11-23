@@ -6,3 +6,6 @@
 # Pedro
 
 #Falcao
+-No classe mesa tem dois metódos que tem a mesma função: retornar a coleção de jogadores
+-Na classe controladorJogador eu não achei no diagrama o uso dele, verificar
+-No diagrama CapturaVilao e na classe Mesa criar método addAoMonteDescarte()

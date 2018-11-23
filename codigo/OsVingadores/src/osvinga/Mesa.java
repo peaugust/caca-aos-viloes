@@ -29,7 +29,6 @@ public class Mesa implements Jogada {
 
     public ArrayList<Jogador> getColecaoJogadores() {
         return this.jogadores;
-        //throw new UnsupportedOperationException();
     }
 
     public void removerVilao(Carta vilao) {
