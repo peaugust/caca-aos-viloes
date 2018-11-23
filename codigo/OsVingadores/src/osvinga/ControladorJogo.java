@@ -78,6 +78,7 @@ public class ControladorJogo {
         boolean encontrou = false;
         for (Jogador jogador : jogadores) {
             encontrou = jogador.ehSeuNome(this.nomeJogador);
+            
         }
         
         throw new UnsupportedOperationException();
