@@ -3,65 +3,63 @@ package osvinga;
 import java.util.ArrayList;
 
 public class Mesa implements Jogada {
-	protected Monte _monteCompra;
-	protected Monte _monteVilao;
-	protected Monte _monteDescarte;
-	protected Monte _monteVilaosAtivos;
-	protected boolean _partidaEmAndamento;
-	protected ArrayList<Jogador> _jogadores;
-	protected boolean _comJogadorVencedor;
-	public Jogador _unnamed_Jogador_;
-	public ControladorJogo _unnamed_ControladorJogo_;
-	public Monte _unnamed_Monte_;
-        
+	protected Monte monteCompra;
+	protected Monte monteVilao;
+	protected Monte monteDescarte;
+	protected Monte monteVilaosAtivos;
+	protected boolean partidaEmAndamento;
+	protected ArrayList<Jogador> jogadores;
+	protected boolean comJogadorVencedor;        
         
         public Mesa(){
-            _monteCompra = new Monte();
-            _monteVilao = new Monte();
-            _monteDescarte = new Monte();
-            _monteVilaosAtivos = new Monte();
-            _partidaEmAndamento = true;
-            _jogadores = new ArrayList();
-            _comJogadorVencedor = false;
+            monteCompra = new Monte();
+            monteVilao = new Monte();
+            monteDescarte = new Monte();
+            monteVilaosAtivos = new Monte();
+            partidaEmAndamento = true;
+            jogadores = new ArrayList();
+            comJogadorVencedor = false;
                     
         }
 
 	public boolean isPartidaEmAndamento() {
-            return this._partidaEmAndamento;
+            return this.partidaEmAndamento;
 	}
 
 	public ArrayList<Jogador> getColecaoJogadores() {
-            return this._jogadores;
+            return this.jogadores;
             //throw new UnsupportedOperationException();
 	}
 
-	public void removerVilao(Personagem aVilao) {
-            this._monteVilaosAtivos.removerCarta(aVilao);
+	public void removerVilao(Carta vilao) {
+            this.monteVilaosAtivos.removerCarta(vilao);
             //throw new UnsupportedOperationException();
 	}
 
 	public boolean isJogadorVencedor() {
-            return _comJogadorVencedor;
+            return comJogadorVencedor;
             //throw new UnsupportedOperationException();
 	}
 
 	public Jogador temJogadorVencedor() {
-            int tamanho = this._monteVilaosAtivos.tamanhoMonte();
+            Jogador jogadorVencedor = new Jogador();
+            int tamanho = this.monteVilaosAtivos.tamanhoMonte();
             if(tamanho == 0){
-                this.setComJogadorVencedor(_comJogadorVencedor);
-                _unnamed_Jogador_ = encontrarJogadorVencedor();
+                this.setComJogadorVencedor(comJogadorVencedor);
+                jogadorVencedor = encontrarJogadorVencedor();
             }
-		throw new UnsupportedOperationException();
+
+            return jogadorVencedor;
 	}
 
 	public void setComJogadorVencedor(boolean aTemjogadorVencedor){
-		this._comJogadorVencedor = aTemjogadorVencedor;
+		this.comJogadorVencedor = aTemjogadorVencedor;
 	}
 
 	public Jogador encontrarJogadorVencedor() {
             Jogador jogadorRef = new Jogador();
             for(int i = 0; i < 2; i++){
-                jogadorRef = _jogadores.get(i);
+                jogadorRef = jogadores.get(i);
             }
             throw new UnsupportedOperationException();
 	}
@@ -71,7 +69,7 @@ public class Mesa implements Jogada {
 	}
 
 	public Carta comprarCartaDoMonteCompra() {
-            Carta novaCarta = this._monteCompra.comprarCarta();
+            Carta novaCarta = this.monteCompra.comprarCarta();
             return novaCarta;
             //throw new UnsupportedOperationException();
 	}
