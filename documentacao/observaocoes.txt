@@ -1,5 +1,7 @@
 # Venancio
 -O diagrama de atividades do capturar vilao precisa ser revisado
+-Torcar mao dos jogadores em mesa precisa ser revisado
+- verificarJogadorDoTurno pode ser um diagrama de atividades para metodos
 
 # Pedro
 
