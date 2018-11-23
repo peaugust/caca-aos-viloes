@@ -1,11 +1,13 @@
 package osvinga;
 
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author joaov
@@ -13,12 +15,17 @@ package osvinga;
 public class InterfaceMesa extends javax.swing.JFrame {
 
     //Atributos:
-    public AtorJogador _unnamed_AtorJogador_;
-    
+    public AtorJogador atorJogador;
+
     /**
      * Creates new form MeuSwingzao
      */
-    public InterfaceMesa() {
+    public InterfaceMesa(AtorJogador atorJogador) {
+        this.atorJogador = atorJogador;
+        initComponents();
+    }
+
+    private InterfaceMesa() {
         initComponents();
     }
 
@@ -117,6 +124,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         });
         jList7.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
         jList7.setVisibleRowCount(1);
+        jList7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList7MouseClicked(evt);
+            }
+        });
         jScrollPane8.setViewportView(jList7);
 
         jList8.setModel(new javax.swing.AbstractListModel<String>() {
@@ -217,6 +229,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
+        ListModel<String> model = this.jList7.getModel();
+        JOptionPane.showConfirmDialog(this, "Oe");
+    }//GEN-LAST:event_jList7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -277,89 +294,88 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
 
-    
     //Metodos:
     public void conectar() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 
-	public String solictarEnderecoServidor() {
-		throw new UnsupportedOperationException();
-	}
+    public String solictarEnderecoServidor() {
+        throw new UnsupportedOperationException();
+    }
 
-	public String solicitarNomeJogador() {
-		throw new UnsupportedOperationException();
-	}
+    public String solicitarNomeJogador() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void mostrarResultadoConectar(int aResultado) {
-		throw new UnsupportedOperationException();
-	}
+    public void mostrarResultadoConectar(int aResultado) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void iniciarPartida() {
-		throw new UnsupportedOperationException();
-	}
+    public void iniciarPartida() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarPartidaEmAndamento() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarPartidaEmAndamento() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarSucessoIniciarPartida() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarSucessoIniciarPartida() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarNaoConectado() {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarNaoConectado() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void desconectar() {
-		throw new UnsupportedOperationException();
-	}
+    public void desconectar() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarDesconexao(boolean aDesconectou) {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarDesconexao(boolean aDesconectou) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void passarTurno() {
-		throw new UnsupportedOperationException();
-	}
+    public void passarTurno() {
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean solicitarConfirmacaoPassarTurno() {
-		throw new UnsupportedOperationException();
-	}
+    public boolean solicitarConfirmacaoPassarTurno() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarPassarTurno(boolean aResultado) {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarPassarTurno(boolean aResultado) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void capturarVilao() {
-		throw new UnsupportedOperationException();
-	}
+    public void capturarVilao() {
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean solicitarConfirmacaoCapturarVilao() {
-		throw new UnsupportedOperationException();
-	}
+    public boolean solicitarConfirmacaoCapturarVilao() {
+        throw new UnsupportedOperationException();
+    }
 
-	public Monte solicitarSelecionarHeroisCapturar() {
-		throw new UnsupportedOperationException();
-	}
+    public Monte solicitarSelecionarHeroisCapturar() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void informarCaputrarVilao(boolean aMensagem) {
-		throw new UnsupportedOperationException();
-	}
+    public void informarCaputrarVilao(boolean aMensagem) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void atualizarInterface(Mesa aMesa) {
-		throw new UnsupportedOperationException();
-	}
+    public void atualizarInterface(Mesa aMesa) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-		throw new UnsupportedOperationException();
-	}
+    public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void usarJoia(Artefato aCartaJoia) {
-		throw new UnsupportedOperationException();
-	}
+    public void usarJoia(Artefato aCartaJoia) {
+        throw new UnsupportedOperationException();
+    }
 
-	public boolean confirmarUtilizacaoJoia() {
-		throw new UnsupportedOperationException();
-	}
+    public boolean confirmarUtilizacaoJoia() {
+        throw new UnsupportedOperationException();
+    }
 }

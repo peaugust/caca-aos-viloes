@@ -8,7 +8,7 @@ public class AtorJogador {
 
     //Construtor:
     public AtorJogador(ControladorJogo controladorJogo) {
-        this.interfaceMesa = new InterfaceMesa();
+        this.interfaceMesa = new InterfaceMesa(this);
         this.controladorJogo = controladorJogo;
     }
 
