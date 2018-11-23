@@ -93,30 +93,30 @@ public class AtorJogador {
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
-        throw new UnsupportedOperationException();
+        return this.interfaceMesa.solicitarConfirmacaoCapturarVilao();
     }
 
     public Monte solicitarSelecionarHeroisCapturar() {
-        throw new UnsupportedOperationException();
+        return this.interfaceMesa.solicitarSelecionarHeroisCapturar();
     }
 
-    public void informarCaputrarVilao(boolean aMensagem) {
-        throw new UnsupportedOperationException();
+    public void informarCaputrarVilao(boolean mensagem) {
+        this.interfaceMesa.informarCaputrarVilao(mensagem);
     }
 
-    public void atualizarInterface(Mesa aMesa) {
-        throw new UnsupportedOperationException();
+    public void atualizarInterface(Mesa mesa) {
+        this.interfaceMesa.atualizarInterface(mesa);
     }
 
-    public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        throw new UnsupportedOperationException();
+    public void notificarJogadorVencedor(Jogador jogadorVencedor) {
+        this.interfaceMesa.notificarJogadorVencedor(jogadorVencedor);
     }
 
-    public void usarJoia(Artefato aCartaJoia) {
-        throw new UnsupportedOperationException();
+    public void usarJoia(Artefato cartaJoia) {
+        this.controladorJogo.usarJoia(cartaJoia);
     }
 
     public boolean confirmarUtilizacaoJoia() {
-        throw new UnsupportedOperationException();
+        return this.interfaceMesa.confirmarUtilizacaoJoia();
     }
 }
