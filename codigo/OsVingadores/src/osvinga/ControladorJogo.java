@@ -111,16 +111,30 @@ public class ControladorJogo {
         return cartasCapturar.calcularSomatorioDePoder();
     }
 
-    public Jogador recuperarInstanciaJogador() {
-        throw new UnsupportedOperationException();
+    public Jogador recuperarInstanciaJogador(){
+        ArrayList<Jogador> jogadorRef = this.mesa.getColecaoJogadores();
+        for(int i = 0; i < 2; i++){
+            Jogador ref = jogadorRef.get(i);
+            if(ref.ehSeuNome(nomeJogador)){
+                return ref;
+            }
+        }
+        return null;
     }
 
     public void receberEstadoDaMesa(Mesa mesa) {
-        throw new UnsupportedOperationException();
+        this.setMesa(mesa);
+        this.atorJogador.atualizarInterface(mesa);
+        this.verificarEstadoDoJogo();
     }
 
     public boolean verificarEstadoDoJogo() {
-        throw new UnsupportedOperationException();
+        Jogador jogadorRef = this.mesa.temJogadorVencedor();
+        if(jogadorRef != null){
+            this.atorJogador.notificarJogadorVencedor(jogadorRef);
+            return true;
+        }
+        return false;
     }
 
     public void setMesa(Mesa mesa) {
@@ -128,7 +142,7 @@ public class ControladorJogo {
     }
 
     public boolean verificarEstadoJogo() {
-        throw new UnsupportedOperationException();
+       return this.verificarEstadoDoJogo();
     }
 
     public boolean cartaLocalizadaEmMaos() {
@@ -136,6 +150,20 @@ public class ControladorJogo {
     }
 
     public void usarJoia(Artefato aCartaJoia) {
+        TipoArtefato tipo = this.verificarQualArtefato(aCartaJoia);
+        switch(tipo){
+            case MENTE: 
+                this.mesa.trocarMaosDosJogadores();
+                break;
+            case TEMPO:
+                Jogador jogador = this.recuperarInstanciaJogador();
+                int x = 0;
+                while(x < 3){
+                    Carta carta = this.mesa.comprarCartaDoMonteCompra();
+                    jogador.adicionarCartaAMaoDoJogador(carta);
+                }
+                break;
+        }
         throw new UnsupportedOperationException();
     }
 
