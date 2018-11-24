@@ -4,7 +4,7 @@ public class Main {
 
     public ControladorJogo _unnamed_ControladorJogo_;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         ControladorJogo controladorJogo = new ControladorJogo();
     }
 }
