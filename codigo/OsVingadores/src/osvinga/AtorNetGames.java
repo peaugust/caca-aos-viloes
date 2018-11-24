@@ -5,10 +5,8 @@ import br.ufsc.inf.leobr.cliente.OuvidorProxy;
 
 public class AtorNetGames implements OuvidorProxy {
 
-    protected Proxy _proxy;
-    protected ControladorJogo _controlador;
-    public ControladorJogo _unnamed_ControladorJogo_;
-    public Proxy _unnamed_Proxy_;
+    protected Proxy proxy;
+    protected ControladorJogo controlador;
 
     public int conectar(String aNomeJogador, String aNomeServidor) {
         throw new UnsupportedOperationException();
