@@ -11,7 +11,19 @@ public class ControladorJogo {
     protected AtorNetGames atorNetGames;
 
     public int conectar() {
-        throw new UnsupportedOperationException();
+        int resultado = 0;
+        if (!this.isConectado()) {
+            String nomeServidor = this.atorJogador.solictarEnderecoServidor();
+            String nomeJogador = this.atorJogador.solicitarNomeJogador();
+            
+            this.setNomeJogador(nomeJogador);
+            
+            this.atorNetGames.conectar(nomeJogador,nomeServidor);
+            
+        } 
+        
+        this.atorJogador.mostrarResultadoConectar(resultado);
+        return resultado;
     }
 
     public boolean isConectado() {
@@ -62,26 +74,38 @@ public class ControladorJogo {
     }
 
     public boolean desconectar() {
-        throw new UnsupportedOperationException();
+        return this.atorNetGames.desconectar();
     }
 
     public boolean passarTurno() {
-        
         boolean ehSeuTurno = this.verificarJogadorDoTurno();
+        boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
+        
+        if (passarTurno) {
+            
+        }
         
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Retorna um boolean se eh a vez do jogador dessa instancia do jogo
+     * realizar seuas jogadas.
+     * 
+     * @return true se for a vez do jogador desse controlador jogar
+     */
     public boolean verificarJogadorDoTurno() {
         ArrayList<Jogador> jogadores = this.mesa.getColecaoJogadores();
         
         boolean encontrou = false;
         for (Jogador jogador : jogadores) {
             encontrou = jogador.ehSeuNome(this.nomeJogador);
-            
+            if (encontrou) {
+                return jogador.isJogadorDaVez();
+            }
         }
         
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     public boolean capturarVilao(Monte cartasCapturar, Carta vilao) {
@@ -164,6 +188,7 @@ public class ControladorJogo {
                 }
                 break;
         }
+        
         throw new UnsupportedOperationException();
     }
 
@@ -176,7 +201,7 @@ public class ControladorJogo {
     }
 
     public void enviarJogada(Mesa mesa) {
-        throw new UnsupportedOperationException();
+        
     }
 
     public AtorJogador getAtorJogador() {
