@@ -2,6 +2,15 @@ package osvinga;
 
 import br.ufsc.inf.leobr.cliente.Jogada;
 import br.ufsc.inf.leobr.cliente.OuvidorProxy;
+import br.ufsc.inf.leobr.cliente.Proxy;
+import br.ufsc.inf.leobr.cliente.exception.ArquivoMultiplayerException;
+import br.ufsc.inf.leobr.cliente.exception.JahConectadoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoConectadoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoJogandoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoPossivelConectarException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import osvinga.rede.NetGames;
 
 public class AtorNetGames implements OuvidorProxy {
 
@@ -9,15 +18,35 @@ public class AtorNetGames implements OuvidorProxy {
     protected ControladorJogo controlador;
 
     public int conectar(String aNomeJogador, String aNomeServidor) {
-        throw new UnsupportedOperationException();
+         try {
+            proxy.conectar(aNomeServidor, aNomeJogador);
+            return 1;
+        } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException e) {
+            //JOptionPane.showMessageDialog(ControladorJogo.getJanelaAtiva(), e.getMessage());
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     public boolean iniciarPartida() {
-        throw new UnsupportedOperationException();
+        try {
+            proxy.iniciarPartida(2);
+            return true;
+        } catch (NaoConectadoException ex) {
+            // JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     public boolean desconectar() {
-        throw new UnsupportedOperationException();
+       try {
+            proxy.desconectar();
+            return true;
+        } catch (NaoConectadoException ex) {
+            Logger.getLogger(NetGames.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 
     public void enviaJogada(Mesa aMesa) {
@@ -41,7 +70,8 @@ public class AtorNetGames implements OuvidorProxy {
 
     @Override
     public void receberJogada(Jogada jogada) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Mesa mesaRecebida = (Mesa)jogada;
+        this.controlador.receberEstadoDaMesa(mesaRecebida);
     }
 
     @Override
