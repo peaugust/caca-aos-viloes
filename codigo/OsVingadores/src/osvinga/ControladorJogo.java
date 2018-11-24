@@ -82,10 +82,11 @@ public class ControladorJogo {
         boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
         
         if (passarTurno) {
-            
+            this.verificarEstadoDoJogo();
+            return true;
         }
         
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     /**
@@ -201,7 +202,7 @@ public class ControladorJogo {
     }
 
     public void enviarJogada(Mesa mesa) {
-        
+        this.atorNetGames.enviaJogada(mesa);
     }
 
     public AtorJogador getAtorJogador() {
@@ -222,5 +223,19 @@ public class ControladorJogo {
 
     private void receberSolicitacaoDeInico() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void passarTurnoDosJogadores() {
+        ArrayList<Jogador> jogadores = this.mesa.getJogadores();
+        Jogador jogador1 = jogadores.get(0);
+        Jogador jogador2 = jogadores.get(1);
+        
+        boolean vezJogador1 = jogador1.isJogadorDaVez();
+        boolean vezJogador2 = jogador2.isJogadorDaVez();
+        
+        jogador1.setJogadorDaVez(vezJogador2);
+        jogador2.setJogadorDaVez(vezJogador1);
+        
+        return;
     }
 }
