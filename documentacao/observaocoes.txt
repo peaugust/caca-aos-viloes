@@ -4,6 +4,7 @@
 -verificarJogadorDoTurno pode ser um diagrama de atividades para metodos
 -Refazer o diagrama verificarOEstadoDoJogo
 -Na interfaceMesa, adicionar os atributos na modelagem
+-Foi modificado o verificar estado do jogo, ele atualiza os jogadores, colocando de quem é a vez de jogar
 
 # Pedro
 
