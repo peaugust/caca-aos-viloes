@@ -19,7 +19,7 @@ public class NetGames implements OuvidorProxy {
     protected Proxy proxy;
     protected ControladorJogo controlador;
 
-    public NetGames(Controlador controlador) {
+    public NetGames(ControladorJogo controlador) {
         super();
         this.controlador = controlador;
         this.proxy = Proxy.getInstance();
@@ -28,10 +28,11 @@ public class NetGames implements OuvidorProxy {
 
     public boolean conectar(String servidor, String nome) {
         try {
+            System.out.print(servidor);
             proxy.conectar(servidor, nome);
             return true;
         } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException e) {
-            JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), e.getMessage());
+            //JOptionPane.showMessageDialog(ControladorJogo.getJanelaAtiva(), e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -50,7 +51,7 @@ public class NetGames implements OuvidorProxy {
             proxy.iniciarPartida(4);
             return true;
         } catch (NaoConectadoException ex) {
-            JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), ex.getMessage());
+            // JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), ex.getMessage());
             return false;
         }
     }
@@ -64,40 +65,41 @@ public class NetGames implements OuvidorProxy {
             this.proxy.obterNomeAdversario(4)
         };
 
-        this.controlador.iniciarNovaPartida(posicao, jogadores);
+        //    this.controlador.iniciarNovaPartida(posicao, jogadores);
     }
 
     @Override
     public void finalizarPartidaComErro(String message) {
-        this.controlador.finalizarPartidaComErro(message);
+        //  this.controlador.finalizarPartidaComErro(message);
     }
 
     @Override
     public void receberMensagem(String msg) {
-        JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), msg);
+        //    JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), msg);
     }
 
     @Override
     public void receberJogada(Jogada jogada) {
-        Demanda demanda = (Demanda) jogada;
-        this.controlador.receberDemanda(demanda);
+        //  Demanda demanda = (Demanda) jogada;
+        //  this.controlador.receberDemanda(demanda);
     }
 
     @Override
     public void tratarConexaoPerdida() {
-        JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), "A conexão com o servidor foi perdida.");
+        //   JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), "A conexão com o servidor foi perdida.");
     }
 
     @Override
     public void tratarPartidaNaoIniciada(String message) {
-        JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), message);
+        //    JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), message);
     }
 
-    public void enviarJogada(Demanda jogada) {
-        try {
-            this.proxy.enviaJogada(jogada);
-        } catch (NaoJogandoException ex) {
-            JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), ex.getMessage());
-        }
-    }
+   // public void enviarJogada(Demanda jogada) {
+        /**
+         * try { this.proxy.enviaJogada(jogada); } catch (NaoJogandoException
+         * ex) { // JOptionPane.showMessageDialog(controlador.getJanelaAtiva(),
+         * ex.getMessage()); }
+    }*
+         */
+   // }
 }
