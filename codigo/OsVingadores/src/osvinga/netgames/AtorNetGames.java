@@ -1,4 +1,4 @@
-package osvinga;
+package osvinga.netgames;
 
 import br.ufsc.inf.leobr.cliente.Jogada;
 import br.ufsc.inf.leobr.cliente.OuvidorProxy;
@@ -10,14 +10,24 @@ import br.ufsc.inf.leobr.cliente.exception.NaoJogandoException;
 import br.ufsc.inf.leobr.cliente.exception.NaoPossivelConectarException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import osvinga.rede.NetGames;
+import osvinga.ControladorJogo;
+import osvinga.Mesa;
 
 public class AtorNetGames implements OuvidorProxy {
 
     protected Proxy proxy;
     protected ControladorJogo controlador;
 
+    public AtorNetGames(ControladorJogo controlador) {
+        super();
+        this.controlador = controlador;
+        this.proxy = Proxy.getInstance();
+    }
+    
+    
+
     public int conectar(String aNomeJogador, String aNomeServidor) {
+        proxy.addOuvinte(this); 
          try {
             proxy.conectar(aNomeServidor, aNomeJogador);
             return 1;
@@ -44,7 +54,7 @@ public class AtorNetGames implements OuvidorProxy {
             proxy.desconectar();
             return true;
         } catch (NaoConectadoException ex) {
-            Logger.getLogger(NetGames.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AtorNetGames.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

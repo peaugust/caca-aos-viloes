@@ -1,5 +1,6 @@
 package osvinga;
 
+import osvinga.netgames.AtorNetGames;
 import java.util.ArrayList;
 
 public class ControladorJogo {
@@ -10,6 +11,15 @@ public class ControladorJogo {
     protected AtorJogador atorJogador;
     protected AtorNetGames atorNetGames;
 
+    public ControladorJogo() {
+      this.atorJogador= new AtorJogador(this);
+      this.atorNetGames = new AtorNetGames(this);
+      this.conectado = false;
+      //TODO: Inserir a inicialização da tela de entrada
+    }
+    
+    
+    
     public int conectar() {
         int resultado = 0;
         if (!this.isConectado()) {
