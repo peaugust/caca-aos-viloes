@@ -178,10 +178,6 @@ public class ControladorJogo {
        return this.verificarEstadoDoJogo();
     }
 
-    public boolean cartaLocalizadaEmMaos() {
-        throw new UnsupportedOperationException();
-    }
-
     public void usarJoia(Artefato aCartaJoia) {
         TipoArtefato tipo = this.verificarQualArtefato(aCartaJoia);
         switch(tipo){
