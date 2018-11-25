@@ -83,12 +83,11 @@ public class AtorJogador {
         this.interfaceMesa.notificarPassarTurno(resultado);
     }
 
-    public void capturarVilao(Carta vilao) {
+    public void capturarVilao(Carta vilao, Monte monte) {
         boolean capturar = this.interfaceMesa.solicitarConfirmacaoCapturarVilao();
         boolean resultado  = false;
         if (capturar) {
-            Monte cartasCapturar = this.interfaceMesa.solicitarSelecionarHeroisCapturar();
-            resultado = this.controladorJogo.capturarVilao(cartasCapturar, vilao);
+            resultado = this.controladorJogo.capturarVilao(monte, vilao);
             this.interfaceMesa.informarCaputrarVilao(resultado);
         }
         
