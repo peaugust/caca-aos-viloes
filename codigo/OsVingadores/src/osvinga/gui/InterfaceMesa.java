@@ -424,10 +424,6 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }
 
-    public Monte solicitarSelecionarHeroisCapturar() {
-        throw new UnsupportedOperationException();
-    }
-
     public void informarCaputrarVilao(boolean mensagem) {
         if (mensagem) {
             JOptionPane.showConfirmDialog(null, "Você capturou o vilão com sucesso!", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
