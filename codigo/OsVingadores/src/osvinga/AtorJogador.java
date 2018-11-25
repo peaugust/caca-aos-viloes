@@ -104,8 +104,8 @@ public class AtorJogador {
         this.interfaceMesa.informarCaputrarVilao(mensagem);
     }
 
-    public void atualizarInterface(Mesa mesa) {
-        this.interfaceMesa.atualizarInterface(mesa);
+    public void atualizarInterface(Mesa mesa, int indexJogaodr) {
+        this.interfaceMesa.atualizarInterface(mesa,indexJogaodr);
     }
 
     public void notificarJogadorVencedor(Jogador jogadorVencedor) {

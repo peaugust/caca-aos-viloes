@@ -26,7 +26,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     public InterfaceMesa(AtorJogador atorJogador) {
         this.atorJogador = atorJogador;
         initComponents();
-        
+
     }
 
     private InterfaceMesa() {
@@ -43,21 +43,21 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaJogadorOponente = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listaViloesJogadorOponente = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
+        vilao1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        monteDescarte = new javax.swing.JList<>();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList6 = new javax.swing.JList<>();
+        vilao2 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jList7 = new javax.swing.JList<>();
+        listaJogadorInstancia = new javax.swing.JList<>();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList<>();
+        listaViloesJogadorInstancia = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -69,28 +69,16 @@ public class InterfaceMesa extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
-        jList1.setVisibleRowCount(1);
-        jScrollPane1.setViewportView(jList1);
+        listaJogadorOponente.setModel(new DefaultListModel());
+        listaJogadorOponente.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
+        listaJogadorOponente.setVisibleRowCount(1);
+        jScrollPane1.setViewportView(listaJogadorOponente);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
+        listaViloesJogadorOponente.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(listaViloesJogadorOponente);
 
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList4);
+        vilao1.setModel(new DefaultListModel());
+        jScrollPane5.setViewportView(vilao1);
 
         jButton1.setText("Monte de Compra");
         jButton1.setMaximumSize(new java.awt.Dimension(39, 90));
@@ -102,41 +90,29 @@ public class InterfaceMesa extends javax.swing.JFrame {
             }
         });
 
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(jList5);
+        monteDescarte.setModel(new DefaultListModel());
+        jScrollPane6.setViewportView(monteDescarte);
 
-        jList6.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane7.setViewportView(jList6);
+        vilao2.setModel(new DefaultListModel());
+        jScrollPane7.setViewportView(vilao2);
 
         jButton2.setText("Pular Vez");
 
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jList7.setModel(new DefaultListModel());
-        jList7.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
-        jList7.setVisibleRowCount(1);
-        jList7.addMouseListener(new java.awt.event.MouseAdapter() {
+        listaJogadorInstancia.setModel(new DefaultListModel());
+        listaJogadorInstancia.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
+        listaJogadorInstancia.setVisibleRowCount(1);
+        listaJogadorInstancia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList7MouseClicked(evt);
+                listaJogadorInstanciaMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(jList7);
+        jScrollPane8.setViewportView(listaJogadorInstancia);
 
-        jList8.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane9.setViewportView(jList8);
+        listaViloesJogadorInstancia.setModel(new DefaultListModel());
+        jScrollPane9.setViewportView(listaViloesJogadorInstancia);
 
         jButton3.setText("Monte de Vilões");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +173,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -214,7 +190,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                         .addGap(56, 56, 56)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9))
                 .addContainerGap())
         );
 
@@ -229,11 +205,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
-        DefaultListModel modelo = (DefaultListModel) this.jList7.getModel();
-        Carta carta = (Carta) modelo.getElementAt(jList7.getSelectedIndex());
+    private void listaJogadorInstanciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJogadorInstanciaMouseClicked
+        DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
+        Carta carta = (Carta) modelo.getElementAt(listaJogadorInstancia.getSelectedIndex());
         System.out.println(carta.poder);
-    }//GEN-LAST:event_jList7MouseClicked
+    }//GEN-LAST:event_listaJogadorInstanciaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,7 +244,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
             public void run() {
                 InterfaceMesa inter = new InterfaceMesa();
                 inter.setVisible(true);
-                
+
+                //DefaultListModel modelo = (DefaultListModel) jList7.getModel();
+                //modelo.add(0, new Carta ("Thanos",100));
                 System.out.println(inter.solictarEnderecoServidor());
             }
         });
@@ -278,13 +256,6 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
-    private javax.swing.JList<String> jList6;
-    private javax.swing.JList<String> jList7;
-    private javax.swing.JList<String> jList8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -296,6 +267,13 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JList<String> listaJogadorInstancia;
+    private javax.swing.JList<String> listaJogadorOponente;
+    private javax.swing.JList<String> listaViloesJogadorInstancia;
+    private javax.swing.JList<String> listaViloesJogadorOponente;
+    private javax.swing.JList<String> monteDescarte;
+    private javax.swing.JList<String> vilao1;
+    private javax.swing.JList<String> vilao2;
     // End of variables declaration//GEN-END:variables
 
     //Metodos:
@@ -304,23 +282,23 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public String solictarEnderecoServidor() {
-        return JOptionPane.showInputDialog(this,"Digite o Endereço do servidor:");
+        return JOptionPane.showInputDialog(this, "Digite o Endereço do servidor:");
     }
 
     public String solicitarNomeJogador() {
-        return JOptionPane.showInputDialog(this,"Digite o Nome do Jogador:");
+        return JOptionPane.showInputDialog(this, "Digite o Nome do Jogador:");
     }
 
     public void mostrarResultadoConectar(int resultado) {
         switch (resultado) {
             case 0:
-                JOptionPane.showConfirmDialog(null, "Falha na Conexão.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Falha na Conexão.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
             case 1:
-                JOptionPane.showConfirmDialog(null, "Sucesso em Conectar.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Sucesso em Conectar.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
             case 2:
-                JOptionPane.showConfirmDialog(null, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
         }
     }
@@ -330,15 +308,15 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarPartidaEmAndamento() {
-        JOptionPane.showConfirmDialog(null, "Partida em Andamento.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "Partida em Andamento.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarSucessoIniciarPartida() {
-        JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarNaoConectado() {
-        JOptionPane.showConfirmDialog(null, "Jogador não está conecatdo no servidor.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "Jogador não está conecatdo no servidor.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void desconectar() {
@@ -354,7 +332,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean solicitarConfirmacaoPassarTurno() {
-        int escolha = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja passar o seu turno?", "AVISO", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        int escolha = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja passar o seu turno?", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (escolha == JOptionPane.YES_OPTION) {
             return true;
         } else {
@@ -364,9 +342,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     public void notificarPassarTurno(boolean resultado) {
         if (resultado) {
-            JOptionPane.showConfirmDialog(null, "Você passou seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "Você passou seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         } else {
-            JOptionPane.showConfirmDialog(null, "Não é o seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "Não é o seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -386,9 +364,103 @@ public class InterfaceMesa extends javax.swing.JFrame {
         throw new UnsupportedOperationException();
     }
 
-    public void atualizarInterface(Mesa mesa) {
-        DefaultListModel modelo = (DefaultListModel) jList7.getModel();
-        modelo.add(0, new Carta ("Thanos",100));
+    public void atualizarInterface(Mesa mesa, int indexJogador) {
+        DefaultListModel modelo = (DefaultListModel) listaJogadorInstancia.getModel();
+        modelo.add(0, new Carta("Thanos", 100));
+        //Atulizar vilao1:
+        DefaultListModel modeloVilao1 = new DefaultListModel();
+        modeloVilao1.add(0, mesa.getMonteVilaosAtivos().getCartas().get(0));
+        this.vilao1.setModel(modeloVilao1);
+        //Atulziar vilao 2:
+        DefaultListModel modeloVilao2 = new DefaultListModel();
+        modeloVilao2.add(0, mesa.getMonteVilaosAtivos().getCartas().get(1));
+        this.vilao2.setModel(modeloVilao2);
+        //Monte de descarte:
+        DefaultListModel modeloMonteDescarte = new DefaultListModel();
+        int iterador = 0;
+        for (Carta carta : mesa.getMonteDescarte().getCartas()) {
+            modeloMonteDescarte.add(iterador, carta);
+            iterador++;
+        }
+        this.monteDescarte.setModel(modeloVilao2);
+        //Atulizar a mostragem de cartas para o jogador dessa instancia do jogo:
+        if (indexJogador == 0) {
+            //Atulizar a lista de cartas do jogador:
+            DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
+                modeloListaJogadorInstancia.add(iterador, carta);
+                iterador++;
+            }
+            this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+            
+            //Atulizar a lista de viloes do jogador:
+            DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
+                modeloListaViloesJogadorInstancia.add(iterador, carta);
+                iterador++;
+            }
+            this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+            
+            
+            //Atulizar a lista de cartas do jogador oponente:
+            DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
+                modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
+                iterador++;
+            }
+            this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+            
+            //Atulizar a lista de viloes do jogador oponente:
+            DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
+                modeloListaViloesJogadorOponente.add(iterador, carta);
+                iterador++;
+            }
+            this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+            
+        } else {
+            //Atulizar a lista de cartas do jogador:
+            DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
+                modeloListaJogadorInstancia.add(iterador, carta);
+                iterador++;
+            }
+            this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+            
+            //Atulizar a lista de viloes do jogador:
+            DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
+                modeloListaViloesJogadorInstancia.add(iterador, carta);
+                iterador++;
+            }
+            this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+            
+            
+            //Atulizar a lista de cartas do jogador oponente:
+            DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
+                modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
+                iterador++;
+            }
+            this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+            
+            //Atulizar a lista de viloes do jogador oponente:
+            DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
+            iterador = 0;
+            for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
+                modeloListaViloesJogadorOponente.add(iterador, carta);
+                iterador++;
+            }
+            this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+        }
+        
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
