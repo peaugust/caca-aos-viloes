@@ -103,6 +103,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         jScrollPane7.setViewportView(vilao2);
 
         jButton2.setText("Pular Vez");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -222,6 +227,12 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listaJogadorInstanciaMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(evt.getSource() == jButton2){
+            this.passarTurno();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,6 +346,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarDesconexao(boolean aDesconectou) {
+        if(aDesconectou){
+            JOptionPane.showConfirmDialog(null, "Houve uma desconexão", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+    }
         throw new UnsupportedOperationException();
     }
 
@@ -364,7 +378,12 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
-        throw new UnsupportedOperationException();
+        int reply = JOptionPane.showConfirmDialog(null,"Deseja capturar esse vilão??","AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if(reply == JOptionPane.YES_OPTION) {
+          return true;
+        }else{
+          return false;
+        }
     }
 
     public Monte solicitarSelecionarHeroisCapturar() {
@@ -473,14 +492,21 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        throw new UnsupportedOperationException();
+        JOptionPane.showConfirmDialog(null,"O Jogador Vencedor é "+aJogadorVencedor.getNome()+". Parabéns!!!");
     }
 
     public void usarJoia(Artefato aCartaJoia) {
-        throw new UnsupportedOperationException();
+        boolean usarJoia = confirmarUtilizacaoJoia();
+        if(usarJoia){
+            this.atorJogador.usarJoia(aCartaJoia);
+        }
     }
 
     public boolean confirmarUtilizacaoJoia() {
-        throw new UnsupportedOperationException();
+        int reply = JOptionPane.showConfirmDialog(null,"Deseja utilizar o efeito da Joia??","Confirmar a utilização", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if(reply == JOptionPane.YES_OPTION) {
+          return true;
+        }
+        return false;
     }
 }
