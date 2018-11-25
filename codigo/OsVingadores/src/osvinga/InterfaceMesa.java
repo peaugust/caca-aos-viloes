@@ -1,8 +1,10 @@
 package osvinga;
 
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +26,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     public InterfaceMesa(AtorJogador atorJogador) {
         this.atorJogador = atorJogador;
         initComponents();
+        
     }
 
     private InterfaceMesa() {
@@ -118,11 +121,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jList7.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList7.setModel(new DefaultListModel());
         jList7.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
         jList7.setVisibleRowCount(1);
         jList7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,7 +230,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
-        //Oe
+        DefaultListModel modelo = (DefaultListModel) this.jList7.getModel();
+        Carta carta = (Carta) modelo.getElementAt(jList7.getSelectedIndex());
+        System.out.println(carta.poder);
     }//GEN-LAST:event_jList7MouseClicked
 
     /**
@@ -385,8 +386,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
         throw new UnsupportedOperationException();
     }
 
-    public void atualizarInterface(Mesa aMesa) {
-        throw new UnsupportedOperationException();
+    public void atualizarInterface(Mesa mesa) {
+        DefaultListModel modelo = (DefaultListModel) jList7.getModel();
+        modelo.add(0, new Carta ("Thanos",100));
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
