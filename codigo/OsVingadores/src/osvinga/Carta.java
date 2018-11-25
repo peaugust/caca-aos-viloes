@@ -26,4 +26,8 @@ public class Carta {
         this.poder = poder;
     }
 
+    @Override
+    public String toString() {
+        return this.nome + " de poder: " + this.poder;
+    }
 }
