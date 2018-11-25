@@ -12,6 +12,7 @@ import osvinga.Jogador;
 import osvinga.Mesa;
 import osvinga.Monte;
 import osvinga.Personagem;
+import osvinga.TipoPersonagem;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -223,22 +224,39 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void listaJogadorInstanciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJogadorInstanciaMouseClicked
-        DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
-        int indexSelecionado = listaJogadorInstancia.getSelectedIndex();
-        if (indexSelecionado >= 0) {
-            Carta carta = (Carta) modelo.getElementAt(indexSelecionado);
-            if (carta instanceof Artefato) {
-                this.usarJoia((Artefato) carta);
+        if (evt.getClickCount() == 2) {
+            DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
+            int indexSelecionado = listaJogadorInstancia.getSelectedIndex();
+            if (indexSelecionado >= 0) {
+                Carta carta = (Carta) modelo.getElementAt(indexSelecionado);
+                if (carta instanceof Artefato) {
+                    this.usarJoia((Artefato) carta);
+                }
             }
         }
     }//GEN-LAST:event_listaJogadorInstanciaMouseClicked
 
     private void vilao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vilao1MouseClicked
-        DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
-        int indexSelecionado = listaJogadorInstancia.getSelectedIndex();
-        if (indexSelecionado >= 0) {
-            Personagem vilao = (Personagem) modelo.getElementAt(indexSelecionado);
-            this.capturarVilao(vilao);
+        DefaultListModel modeloHerois = (DefaultListModel) this.listaJogadorInstancia.getModel();
+        int[] indiceHeroi = listaJogadorInstancia.getSelectedIndices();
+        
+        DefaultListModel modeloViloes = (DefaultListModel) this.vilao1.getModel();
+        int indexVilao = this.vilao1.getSelectedIndex();
+        
+        Monte monte = new Monte();
+        
+        if (indexVilao >= 0) { //Recuperar o vilao
+            Personagem vilao = (Personagem) modeloViloes.getElementAt(indexVilao);
+            
+            if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
+                for (int i = 0; i < indiceHeroi.length; i++ ) {
+                    monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
+                }
+                
+                this.capturarVilao(vilao,monte);
+                
+            }
+            
         }
     }//GEN-LAST:event_vilao1MouseClicked
 
@@ -282,6 +300,12 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 InterfaceMesa inter = new InterfaceMesa();
                 inter.setVisible(true);
 
+                DefaultListModel modelo = (DefaultListModel) inter.listaJogadorInstancia.getModel();
+                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
+                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
+                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
+                DefaultListModel vilao1 = (DefaultListModel) inter.vilao1.getModel();
+                vilao1.add(0, new Personagem ("Thanos",100,TipoPersonagem.VILAO));
                 //DefaultListModel modelo = (DefaultListModel) jList7.getModel();
                 //modelo.add(0, new Carta ("Thanos",100));
                 System.out.println(inter.solictarEnderecoServidor());
@@ -387,8 +411,8 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }
 
-    public void capturarVilao(Carta vilao) {
-        throw new UnsupportedOperationException();
+    public void capturarVilao(Carta vilao, Monte monte) {
+        this.atorJogador.capturarVilao(vilao, monte);
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
@@ -404,8 +428,12 @@ public class InterfaceMesa extends javax.swing.JFrame {
         throw new UnsupportedOperationException();
     }
 
-    public void informarCaputrarVilao(boolean aMensagem) {
-        throw new UnsupportedOperationException();
+    public void informarCaputrarVilao(boolean mensagem) {
+        if (mensagem) {
+            JOptionPane.showConfirmDialog(null, "Você capturou o vilão com sucesso!", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showConfirmDialog(null, "Não foi possível capturar o vilão :(.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     public void atualizarInterface(Mesa mesa, int indexJogador) {
