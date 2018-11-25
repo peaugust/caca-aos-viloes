@@ -17,6 +17,7 @@ public class ControladorJogo {
         this.atorNetGames = new AtorNetGames(this);
         this.conectado = false;
     }
+    
     public void conectar() {
    
         int resultado = 0;
