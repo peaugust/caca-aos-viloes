@@ -2,6 +2,7 @@ package osvinga;
 
 import osvinga.netgames.AtorNetGames;
 import java.util.ArrayList;
+import osvinga.gui.InterfaceMesa;
 
 public class ControladorJogo {
 
@@ -15,11 +16,8 @@ public class ControladorJogo {
       this.atorJogador= new AtorJogador(this);
       this.atorNetGames = new AtorNetGames(this);
       this.conectado = false;
-      //TODO: Inserir a inicialização da tela de entrada
     }
-    
-    
-    
+   
     public int conectar() {
         int resultado = 0;
         if (!this.isConectado()) {
