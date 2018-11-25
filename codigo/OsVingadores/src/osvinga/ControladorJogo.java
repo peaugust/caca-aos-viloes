@@ -17,25 +17,25 @@ public class ControladorJogo {
         this.atorNetGames = new AtorNetGames(this);
         this.conectado = false;
     }
-
-    public int conectar() {
+    public void conectar() {
+   
         int resultado = 0;
         if (!this.isConectado()) {
             String nomeServidor = this.atorJogador.solictarEnderecoServidor();
             String nomeJogador = this.atorJogador.solicitarNomeJogador();
 
             this.setNomeJogador(nomeJogador);
-
-            this.atorNetGames.conectar(nomeJogador, nomeServidor);
-
+            
+            resultado = this.atorNetGames.conectar(nomeJogador,nomeServidor);
+            
         }
-
+        this.conectado = resultado == 1;
+        System.out.println("resultado"+ this.nomeJogador+": " + resultado);
         this.atorJogador.mostrarResultadoConectar(resultado);
-        return resultado;
     }
 
     public boolean isConectado() {
-        return this.conectado;
+        return this.conectado;      
     }
 
     public void setNomeJogador(String aNomeJogador) {
@@ -57,20 +57,14 @@ public class ControladorJogo {
                 return;
             } else {
                 boolean semConexao = this.getAtorNetGames().iniciarPartida();
-
+                System.out.println(this.nomeJogador + "CONEXÃO:"+ semConexao);
                 if (semConexao) {
                     this.getAtorJogador().notificarNaoConectado();
-                    return;
                 } else {
                     this.getAtorJogador().notificarSucessoIniciarPartida();
-                    this.receberSolicitacaoDeInico();
-                    return;
                 }
             }
         }
-
-        this.getAtorJogador().notificarNaoConectado();
-        return;
     }
 
     public Mesa getMesa() {
@@ -261,8 +255,8 @@ public class ControladorJogo {
         this.atorNetGames = atorNetGames;
     }
 
-    private void receberSolicitacaoDeInico() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void receberSolicitacaoDeInicio() {
+        System.out.print("COMEÇOU: "+this.nomeJogador);
     }
 
     public void passarTurnoDosJogadores() {

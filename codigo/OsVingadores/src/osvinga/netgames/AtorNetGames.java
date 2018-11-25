@@ -41,11 +41,10 @@ public class AtorNetGames implements OuvidorProxy {
     public boolean iniciarPartida() {
         try {
             proxy.iniciarPartida(2);
-            return true;
-        } catch (NaoConectadoException ex) {
-            // JOptionPane.showMessageDialog(controlador.getJanelaAtiva(), ex.getMessage());
-            ex.printStackTrace();
             return false;
+        } catch (NaoConectadoException ex) {
+            ex.printStackTrace();
+            return true;
         }
     }
 
@@ -65,7 +64,8 @@ public class AtorNetGames implements OuvidorProxy {
 
     @Override
     public void iniciarNovaPartida(Integer posicao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Minha posição é: " + posicao);
+        this.controlador.receberSolicitacaoDeInicio();
     }
 
     @Override
