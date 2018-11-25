@@ -97,10 +97,6 @@ public class AtorJogador {
         return this.interfaceMesa.solicitarConfirmacaoCapturarVilao();
     }
 
-    public Monte solicitarSelecionarHeroisCapturar() {
-        return this.interfaceMesa.solicitarSelecionarHeroisCapturar();
-    }
-
     public void informarCaputrarVilao(boolean mensagem) {
         this.interfaceMesa.informarCaputrarVilao(mensagem);
     }
