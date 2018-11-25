@@ -5,6 +5,8 @@
 -Refazer o diagrama verificarOEstadoDoJogo
 -Na interfaceMesa, adicionar os atributos na modelagem
 -Foi modificado o verificar estado do jogo, ele atualiza os jogadores, colocando de quem é a vez de jogar
+-Na interfaceMesa, para atualizarInterface(), vou precisar saber do Index do jogdar, alterar isso na modelagem. Para tanto, deve ser alterado o diagrama receberEstadoDaMesa
+para saber qual o index do Jogador atual
 
 # Pedro
 
