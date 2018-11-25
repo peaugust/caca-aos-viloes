@@ -1,5 +1,6 @@
 package osvinga;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
@@ -230,8 +231,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList7MouseClicked
-        ListModel<String> model = this.jList7.getModel();
-        JOptionPane.showConfirmDialog(this, "Oe");
+        //Oe
     }//GEN-LAST:event_jList7MouseClicked
 
     /**
@@ -265,7 +265,10 @@ public class InterfaceMesa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceMesa().setVisible(true);
+                InterfaceMesa inter = new InterfaceMesa();
+                inter.setVisible(true);
+                
+                System.out.println(inter.solictarEnderecoServidor());
             }
         });
     }
@@ -296,35 +299,45 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     //Metodos:
     public void conectar() {
-        throw new UnsupportedOperationException();
+        this.atorJogador.conectar();
     }
 
     public String solictarEnderecoServidor() {
-        throw new UnsupportedOperationException();
+        return JOptionPane.showInputDialog(this,"Digite o Endereço do servidor:");
     }
 
     public String solicitarNomeJogador() {
-        throw new UnsupportedOperationException();
+        return JOptionPane.showInputDialog(this,"Digite o Nome do Jogador:");
     }
 
-    public void mostrarResultadoConectar(int aResultado) {
-        throw new UnsupportedOperationException();
+    public void mostrarResultadoConectar(int resultado) {
+        switch (resultado) {
+            case 0:
+                JOptionPane.showConfirmDialog(null, "Falha na Conexão.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                break;
+            case 1:
+                JOptionPane.showConfirmDialog(null, "Sucesso em Conectar.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                break;
+            case 2:
+                JOptionPane.showConfirmDialog(null, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+                break;
+        }
     }
 
     public void iniciarPartida() {
-        throw new UnsupportedOperationException();
+        this.atorJogador.iniciarPartida();
     }
 
     public void notificarPartidaEmAndamento() {
-        throw new UnsupportedOperationException();
+        JOptionPane.showConfirmDialog(null, "Partida em Andamento.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarSucessoIniciarPartida() {
-        throw new UnsupportedOperationException();
+        JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarNaoConectado() {
-        throw new UnsupportedOperationException();
+        JOptionPane.showConfirmDialog(null, "Jogador não está conecatdo no servidor.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
     }
 
     public void desconectar() {
@@ -336,15 +349,24 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void passarTurno() {
-        throw new UnsupportedOperationException();
+        this.atorJogador.passarTurno();
     }
 
     public boolean solicitarConfirmacaoPassarTurno() {
-        throw new UnsupportedOperationException();
+        int escolha = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja passar o seu turno?", "AVISO", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if (escolha == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void notificarPassarTurno(boolean aResultado) {
-        throw new UnsupportedOperationException();
+    public void notificarPassarTurno(boolean resultado) {
+        if (resultado) {
+            JOptionPane.showConfirmDialog(null, "Você passou seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showConfirmDialog(null, "Não é o seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     public void capturarVilao() {
