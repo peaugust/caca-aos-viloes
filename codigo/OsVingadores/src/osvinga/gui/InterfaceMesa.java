@@ -361,6 +361,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
             case 2:
                 JOptionPane.showConfirmDialog(null, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
+            case 3:
+                JOptionPane.showConfirmDialog(null, "Arquivo Multiplayer Ausente.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                break;
         }
     }
 
