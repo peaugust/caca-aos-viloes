@@ -130,14 +130,14 @@ public class Mesa implements Jogada {
         this.jogadores = jogadores;
     }
 
-    public void cirarMonteDeCompra() {
+    public void criarMonteDeCompra() {
         Monte novoMonteCompra = new Monte();
 
         novoMonteCompra.adicionarCarta(new Personagem("Groot", 1, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Bucky", 1, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Shuri", 1, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Wong", 1, TipoPersonagem.HEROI));
-        novoMonteCompra.adicionarCarta(new Personagem("Matins", 1, TipoPersonagem.HEROI));
+        novoMonteCompra.adicionarCarta(new Personagem("Mantis", 1, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Falcão", 1, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Homem-Aranha", 2, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Thor", 2, TipoPersonagem.HEROI));

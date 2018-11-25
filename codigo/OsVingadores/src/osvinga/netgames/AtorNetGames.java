@@ -64,8 +64,10 @@ public class AtorNetGames implements OuvidorProxy {
 
     @Override
     public void iniciarNovaPartida(Integer posicao) {
-        System.out.println("Minha posição é: " + posicao);
-        this.controlador.receberSolicitacaoDeInicio();
+        String[] nomeJogadores = new String[2];
+        nomeJogadores[0] = proxy.getNomeJogador();
+        nomeJogadores[1] = proxy.obterNomeAdversarios().get(0);
+        this.controlador.receberSolicitacaoDeInicio(posicao, nomeJogadores);
     }
 
     @Override

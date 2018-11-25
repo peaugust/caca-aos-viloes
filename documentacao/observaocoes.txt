@@ -12,6 +12,8 @@ para saber qual o index do Jogador atual
 
 # Pedro
 - Bloquear os botões da mesa enquanto não estiver conectado
+- Bloquear iniciar partida após a partida ter sido iniciada
+
 
 #Falcao
 -No classe mesa tem dois metódos que tem a mesma função: retornar a coleção de jogadores

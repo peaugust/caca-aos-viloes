@@ -278,8 +278,12 @@ public class ControladorJogo {
         this.atorNetGames = atorNetGames;
     }
 
-    public void receberSolicitacaoDeInicio() {
-        System.out.print("COMEÇOU: "+this.nomeJogador);
+    public void receberSolicitacaoDeInicio(int posicao, String[] nomeJogadores) {
+        if(posicao == 1){
+            System.out.print("EU INICIEI: "+this.nomeJogador);
+        }else{
+            System.out.println("EU NÃO INICIEI: "+this.nomeJogador);
+        }
     }
 
     public void passarTurnoDosJogadores() {
