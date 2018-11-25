@@ -1,5 +1,7 @@
 package osvinga;
 
+import osvinga.gui.InterfaceMesa;
+
 public class AtorJogador {
 
     //Atributos:

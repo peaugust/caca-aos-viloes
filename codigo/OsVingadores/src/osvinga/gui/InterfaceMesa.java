@@ -1,10 +1,17 @@
 package osvinga;
+package osvinga.gui;
 
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
+import osvinga.Artefato;
+import osvinga.AtorJogador;
+import osvinga.Carta;
+import osvinga.Jogador;
+import osvinga.Mesa;
+import osvinga.Monte;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
