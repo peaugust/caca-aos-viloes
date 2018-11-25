@@ -232,7 +232,29 @@ public class ControladorJogo {
     }
 
     public void atualizarEstadoJogo() {
-        throw new UnsupportedOperationException();
+        //Botar no diagrama:
+        Personagem vilao1 = (Personagem) this.mesa.getMonteVilaosAtivos().getCartas().get(0);
+        Personagem vilao2 = (Personagem) this.mesa.getMonteVilaosAtivos().getCartas().get(1);
+        if (vilao1 == null) {
+            Carta novoVilao1 = this.mesa.getMonteVilao().comprarCarta();
+            this.mesa.monteVilaosAtivos.getCartas().set(0,(Personagem) novoVilao1);
+        } else if (vilao2 == null) {
+            Carta novoVilao2 = this.mesa.getMonteVilao().comprarCarta();
+            this.mesa.monteVilaosAtivos.getCartas().set(1,(Personagem) novoVilao2);
+        }
+        //-----
+        Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
+        String nome = jogadorPrincipal.getNomeJogador();
+        ArrayList<Jogador> jogadores = this.mesa.getColecaoJogadores();
+        for (Jogador jogador : jogadores) {
+            boolean ehSeuNome = jogador.ehSeuNome(this.nomeJogador);
+            if (ehSeuNome) {
+                jogador.setJogadorDaVez(false);
+            } else {
+                jogador.setJogadorDaVez(true);
+            }
+        }
+        
     }
 
     public void enviarJogada(Mesa mesa) {
