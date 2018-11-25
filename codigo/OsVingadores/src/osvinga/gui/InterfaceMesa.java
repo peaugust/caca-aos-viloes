@@ -383,7 +383,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public String solictarEnderecoServidor() {
-        return JOptionPane.showInputDialog(this, "Digite o Endereço do servidor:");
+        return JOptionPane.showInputDialog(this, "Digite o Endereço do servidor:", "localhost");
     }
 
     public String solicitarNomeJogador() {
@@ -416,7 +416,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarSucessoIniciarPartida() {
-        JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+      //  JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarNaoConectado() {
