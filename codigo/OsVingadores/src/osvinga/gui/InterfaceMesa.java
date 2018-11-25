@@ -11,6 +11,7 @@ import osvinga.Carta;
 import osvinga.Jogador;
 import osvinga.Mesa;
 import osvinga.Monte;
+import osvinga.Personagem;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,7 +33,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     public InterfaceMesa(AtorJogador atorJogador) {
         this.atorJogador = atorJogador;
         initComponents();
-
+        this.setVisible(true);
     }
 
     private InterfaceMesa() {
@@ -84,6 +85,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         jScrollPane2.setViewportView(listaViloesJogadorOponente);
 
         vilao1.setModel(new DefaultListModel());
+        vilao1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vilao1MouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(vilao1);
 
         jButton1.setText("Monte de Compra");
@@ -222,6 +228,15 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listaJogadorInstanciaMouseClicked
 
+    private void vilao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vilao1MouseClicked
+        DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
+        int indexSelecionado = listaJogadorInstancia.getSelectedIndex();
+        if (indexSelecionado >= 0) {
+            Personagem vilao = (Personagem) modelo.getElementAt(indexSelecionado);
+            this.capturarVilao(vilao);
+        }
+    }//GEN-LAST:event_vilao1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -359,7 +374,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }
 
-    public void capturarVilao() {
+    public void capturarVilao(Carta vilao) {
         throw new UnsupportedOperationException();
     }
 
