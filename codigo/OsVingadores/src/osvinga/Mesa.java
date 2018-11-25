@@ -1,5 +1,6 @@
 package osvinga;
 
+import br.ufsc.inf.leobr.cliente.Jogada;
 import java.util.ArrayList;
 
 public class Mesa implements Jogada {
