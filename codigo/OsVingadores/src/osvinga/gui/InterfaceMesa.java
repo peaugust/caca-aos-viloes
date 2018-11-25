@@ -68,9 +68,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
         listaViloesJogadorInstancia = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menuConectar = new javax.swing.JMenu();
+        menuDesconectar = new javax.swing.JMenu();
+        menuIniciarPartida = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,14 +139,38 @@ public class InterfaceMesa extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Conectar");
-        jMenuBar1.add(jMenu1);
+        menuConectar.setText("Conectar");
+        menuConectar.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                menuConectarMenuSelected(evt);
+            }
+        });
+        menuConectar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuConectarMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuConectar);
 
-        jMenu2.setText("Desconectar");
-        jMenuBar1.add(jMenu2);
+        menuDesconectar.setText("Desconectar");
+        menuDesconectar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuDesconectarMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuDesconectar);
 
-        jMenu3.setText("Iniciar Partida");
-        jMenuBar1.add(jMenu3);
+        menuIniciarPartida.setText("Iniciar Partida");
+        menuIniciarPartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuIniciarPartidaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuIniciarPartida);
 
         setJMenuBar(jMenuBar1);
 
@@ -266,6 +290,22 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void menuConectarMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuConectarMenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuConectarMenuSelected
+
+    private void menuConectarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuConectarMouseClicked
+        this.conectar();
+    }//GEN-LAST:event_menuConectarMouseClicked
+
+    private void menuDesconectarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuDesconectarMouseClicked
+        this.desconectar();
+    }//GEN-LAST:event_menuDesconectarMouseClicked
+
+    private void menuIniciarPartidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIniciarPartidaMouseClicked
+        this.iniciarPartida();
+    }//GEN-LAST:event_menuIniciarPartidaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -317,9 +357,6 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -332,6 +369,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private javax.swing.JList<String> listaJogadorOponente;
     private javax.swing.JList<String> listaViloesJogadorInstancia;
     private javax.swing.JList<String> listaViloesJogadorOponente;
+    private javax.swing.JMenu menuConectar;
+    private javax.swing.JMenu menuDesconectar;
+    private javax.swing.JMenu menuIniciarPartida;
     private javax.swing.JList<String> monteDescarte;
     private javax.swing.JList<String> vilao1;
     private javax.swing.JList<String> vilao2;
