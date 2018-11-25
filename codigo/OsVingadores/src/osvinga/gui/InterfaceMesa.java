@@ -1,4 +1,3 @@
-package osvinga;
 package osvinga.gui;
 
 import java.util.List;
