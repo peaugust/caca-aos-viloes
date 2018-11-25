@@ -243,11 +243,10 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_vilao1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(evt.getSource() == jButton2){
+        if (evt.getSource() == jButton2) {
             this.passarTurno();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -358,14 +357,13 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void desconectar() {
-        throw new UnsupportedOperationException();
+        this.atorJogador.desconectar();
     }
 
-    public void notificarDesconexao(boolean aDesconectou) {
-        if(aDesconectou){
+    public void notificarDesconexao(boolean desconectou) {
+        if (desconectou) {
             JOptionPane.showConfirmDialog(null, "Houve uma desconexão", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-    }
-        throw new UnsupportedOperationException();
+        }
     }
 
     public void passarTurno() {
@@ -394,11 +392,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
-        int reply = JOptionPane.showConfirmDialog(null,"Deseja capturar esse vilão??","AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if(reply == JOptionPane.YES_OPTION) {
-          return true;
-        }else{
-          return false;
+        int reply = JOptionPane.showConfirmDialog(null, "Deseja capturar esse vilão??", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (reply == JOptionPane.YES_OPTION) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -508,20 +506,20 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(null,"O Jogador Vencedor é "+aJogadorVencedor.getNome()+". Parabéns!!!");
+        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!");
     }
 
     public void usarJoia(Artefato aCartaJoia) {
         boolean usarJoia = confirmarUtilizacaoJoia();
-        if(usarJoia){
+        if (usarJoia) {
             this.atorJogador.usarJoia(aCartaJoia);
         }
     }
 
     public boolean confirmarUtilizacaoJoia() {
-        int reply = JOptionPane.showConfirmDialog(null,"Deseja utilizar o efeito da Joia??","Confirmar a utilização", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if(reply == JOptionPane.YES_OPTION) {
-          return true;
+        int reply = JOptionPane.showConfirmDialog(null, "Deseja utilizar o efeito da Joia??", "Confirmar a utilização", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (reply == JOptionPane.YES_OPTION) {
+            return true;
         }
         return false;
     }
