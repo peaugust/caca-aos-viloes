@@ -207,8 +207,13 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     private void listaJogadorInstanciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaJogadorInstanciaMouseClicked
         DefaultListModel modelo = (DefaultListModel) this.listaJogadorInstancia.getModel();
-        Carta carta = (Carta) modelo.getElementAt(listaJogadorInstancia.getSelectedIndex());
-        System.out.println(carta.poder);
+        int indexSelecionado = listaJogadorInstancia.getSelectedIndex();
+        if (indexSelecionado >= 0) {
+            Carta carta = (Carta) modelo.getElementAt(indexSelecionado);
+            if (carta instanceof Artefato) {
+                this.usarJoia((Artefato) carta);
+            }
+        }
     }//GEN-LAST:event_listaJogadorInstanciaMouseClicked
 
     /**
@@ -393,7 +398,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
-            
+
             //Atulizar a lista de viloes do jogador:
             DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
             iterador = 0;
@@ -402,8 +407,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
-            
-            
+
             //Atulizar a lista de cartas do jogador oponente:
             DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
             iterador = 0;
@@ -412,7 +416,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
-            
+
             //Atulizar a lista de viloes do jogador oponente:
             DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
             iterador = 0;
@@ -421,7 +425,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
-            
+
         } else {
             //Atulizar a lista de cartas do jogador:
             DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
@@ -431,7 +435,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
-            
+
             //Atulizar a lista de viloes do jogador:
             DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
             iterador = 0;
@@ -440,8 +444,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
-            
-            
+
             //Atulizar a lista de cartas do jogador oponente:
             DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
             iterador = 0;
@@ -450,7 +453,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 iterador++;
             }
             this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
-            
+
             //Atulizar a lista de viloes do jogador oponente:
             DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
             iterador = 0;
@@ -460,7 +463,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
             }
             this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
         }
-        
+
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
