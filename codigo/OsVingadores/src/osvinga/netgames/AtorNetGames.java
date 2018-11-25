@@ -23,19 +23,19 @@ public class AtorNetGames implements OuvidorProxy {
         this.controlador = controlador;
         this.proxy = Proxy.getInstance();
     }
-    
-    
 
     public int conectar(String aNomeJogador, String aNomeServidor) {
-        proxy.addOuvinte(this); 
-         try {
+        proxy.addOuvinte(this);
+        try {
             proxy.conectar(aNomeServidor, aNomeJogador);
-            return 1;
-        } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException e) {
-            //JOptionPane.showMessageDialog(ControladorJogo.getJanelaAtiva(), e.getMessage());
-            e.printStackTrace();
+        } catch (JahConectadoException e) {
+            return 2;
+        } catch (NaoPossivelConectarException e) {
             return 0;
+        } catch (ArquivoMultiplayerException e) {
+            return 3;
         }
+        return 1;
     }
 
     public boolean iniciarPartida() {
@@ -50,7 +50,7 @@ public class AtorNetGames implements OuvidorProxy {
     }
 
     public boolean desconectar() {
-       try {
+        try {
             proxy.desconectar();
             return true;
         } catch (NaoConectadoException ex) {
@@ -80,7 +80,7 @@ public class AtorNetGames implements OuvidorProxy {
 
     @Override
     public void receberJogada(Jogada jogada) {
-        Mesa mesaRecebida = (Mesa)jogada;
+        Mesa mesaRecebida = (Mesa) jogada;
         this.controlador.receberEstadoDaMesa(mesaRecebida);
     }
 
