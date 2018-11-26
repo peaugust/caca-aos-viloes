@@ -25,6 +25,7 @@ public class ControladorJogo {
         if (!this.isConectado()) {
             String nomeServidor = this.atorJogador.solictarEnderecoServidor();
             String nomeJogador = this.atorJogador.solicitarNomeJogador();
+            this.nomeJogador = nomeJogador;
 
             this.setNomeJogador(nomeJogador);
 
@@ -155,9 +156,10 @@ public class ControladorJogo {
         return null;
     }
 
+    //Importante
     public void receberEstadoDaMesa(Mesa mesa) {
         this.setMesa(mesa);
-        this.atorJogador.atualizarInterface(mesa, 1);
+        this.atorJogador.atualizarInterface(mesa, 0);
         this.verificarEstadoDoJogo();
     }
 
@@ -310,6 +312,11 @@ public class ControladorJogo {
         jogador1.setJogadorDaVez(vezJogador2);
         jogador2.setJogadorDaVez(vezJogador1);
 
+        jogadores.remove(1);
+        jogadores.remove(0);
+        jogadores.add(0, jogador1);
+        jogadores.add(1, jogador2);
+        
         return;
     }
 }
