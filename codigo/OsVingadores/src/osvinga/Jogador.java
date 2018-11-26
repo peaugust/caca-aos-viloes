@@ -10,8 +10,8 @@ public class Jogador {
     protected boolean jogadorDaVez;
 
     //Construtor:
-    public Jogador() {
-        this.nome = "";
+    public Jogador(String nome) {
+        this.nome = nome;
         this.pontuacao = 0;
         this.mao = new Monte();
         this.viloesCapturados = new Monte();
