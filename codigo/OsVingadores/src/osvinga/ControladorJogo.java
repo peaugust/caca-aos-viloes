@@ -18,25 +18,25 @@ public class ControladorJogo {
         this.mesa = new Mesa();
         this.conectado = false;
     }
-    
+
     public void conectar() {
-   
+
         int resultado = 0;
         if (!this.isConectado()) {
             String nomeServidor = this.atorJogador.solictarEnderecoServidor();
             String nomeJogador = this.atorJogador.solicitarNomeJogador();
 
             this.setNomeJogador(nomeJogador);
-            
-            resultado = this.atorNetGames.conectar(nomeJogador,nomeServidor);
-            
+
+            resultado = this.atorNetGames.conectar(nomeJogador, nomeServidor);
+
         }
         this.conectado = resultado == 1;
         this.atorJogador.mostrarResultadoConectar(resultado);
     }
 
     public boolean isConectado() {
-        return this.conectado;      
+        return this.conectado;
     }
 
     public void setNomeJogador(String aNomeJogador) {
@@ -58,7 +58,7 @@ public class ControladorJogo {
                 return;
             } else {
                 boolean semConexao = this.getAtorNetGames().iniciarPartida();
-                System.out.println(this.nomeJogador + "CONEXÃO:"+ semConexao);
+                System.out.println(this.nomeJogador + "CONEXÃO:" + semConexao);
                 if (semConexao) {
                     this.getAtorJogador().notificarNaoConectado();
                 } else {
@@ -82,11 +82,16 @@ public class ControladorJogo {
 
     public boolean passarTurno() {
         boolean ehSeuTurno = this.verificarJogadorDoTurno();
-        boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
 
-        if (passarTurno) {
-            this.verificarEstadoDoJogo();
-            return true;
+        if (ehSeuTurno) {
+            boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
+            
+            this.passarTurnoDosJogadores();
+
+            if (passarTurno) {
+                this.verificarEstadoDoJogo();
+                return true;
+            }
         }
 
         return false;
@@ -152,7 +157,7 @@ public class ControladorJogo {
 
     public void receberEstadoDaMesa(Mesa mesa) {
         this.setMesa(mesa);
-        this.atorJogador.atualizarInterface(mesa,1);
+        this.atorJogador.atualizarInterface(mesa, 1);
         this.verificarEstadoDoJogo();
     }
 
@@ -181,9 +186,9 @@ public class ControladorJogo {
             case MENTE:
                 this.mesa.trocarMaosDosJogadores();
                 break;
-                
+
             case TEMPO:
-                
+
                 jogador = this.recuperarInstanciaJogador();
                 int x = 0;
                 while (x < 3) {
@@ -191,13 +196,13 @@ public class ControladorJogo {
                     jogador.adicionarCartaAMaoDoJogador(carta);
                 }
                 break;
-                
+
             case ESPACO:
                 jogador = this.recuperarInstanciaJogador();
                 Carta carta = this.getMesa().comprarCartaDoMonteCompra();
                 jogador.adicionarCartaAMaoDoJogador(carta);
                 break;
-                
+
             case REALIDADE:
                 jogador = this.recuperarInstanciaJogador();
                 jogadores = mesa.getColecaoJogadores();
@@ -210,7 +215,7 @@ public class ControladorJogo {
                     }
                 }
                 break;
-                
+
             case PODER:
                 jogador = this.recuperarInstanciaJogador();
                 jogadores = mesa.getColecaoJogadores();
@@ -224,7 +229,7 @@ public class ControladorJogo {
                 }
                 break;
         }
-        
+
         this.enviarJogada(this.mesa);
     }
 
@@ -238,10 +243,10 @@ public class ControladorJogo {
         Personagem vilao2 = (Personagem) this.mesa.getMonteVilaosAtivos().getCartas().get(1);
         if (vilao1 == null) {
             Carta novoVilao1 = this.mesa.getMonteVilao().comprarCarta();
-            this.mesa.monteVilaosAtivos.getCartas().set(0,(Personagem) novoVilao1);
+            this.mesa.monteVilaosAtivos.getCartas().set(0, (Personagem) novoVilao1);
         } else if (vilao2 == null) {
             Carta novoVilao2 = this.mesa.getMonteVilao().comprarCarta();
-            this.mesa.monteVilaosAtivos.getCartas().set(1,(Personagem) novoVilao2);
+            this.mesa.monteVilaosAtivos.getCartas().set(1, (Personagem) novoVilao2);
         }
         //-----
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
@@ -255,7 +260,7 @@ public class ControladorJogo {
                 jogador.setJogadorDaVez(true);
             }
         }
-        
+
     }
 
     public void enviarJogada(Mesa mesa) {
@@ -279,18 +284,18 @@ public class ControladorJogo {
     }
 
     public void receberSolicitacaoDeInicio(int posicao, String[] nomeJogadores) {
-        if(posicao == 1){
-            System.out.print("EU INICIEI: "+this.nomeJogador);
+        if (posicao == 1) {
+            System.out.print("EU INICIEI: " + this.nomeJogador);
             Mesa varMesa = this.getMesa();
             this.mesa.criarMonteDeCompra();
             this.mesa.criarMonteVilao();
             this.mesa.criarMonteDescarte();
             this.mesa.criarMonteViloesAtivos();
-            this.mesa.instanciaJogadores(nomeJogadores[0],nomeJogadores[1]);
+            this.mesa.instanciaJogadores(nomeJogadores[0], nomeJogadores[1]);
             this.receberEstadoDaMesa(mesa);
             this.atorNetGames.enviaJogada(varMesa);
-        }else{
-            System.out.println("EU NÃO INICIEI: "+this.nomeJogador);
+        } else {
+            System.out.println("EU NÃO INICIEI: " + this.nomeJogador);
         }
     }
 
