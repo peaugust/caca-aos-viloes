@@ -1,6 +1,8 @@
 package osvinga;
 
-public class Jogador {
+import br.ufsc.inf.leobr.cliente.Jogada;
+
+public class Jogador implements Jogada {
 
     //Atributos:
     protected String nome;

@@ -152,7 +152,7 @@ public class ControladorJogo {
 
     public void receberEstadoDaMesa(Mesa mesa) {
         this.setMesa(mesa);
-        //this.atorJogador.atualizarInterface(mesa);
+        this.atorJogador.atualizarInterface(mesa,0);
         this.verificarEstadoDoJogo();
     }
 
@@ -287,6 +287,7 @@ public class ControladorJogo {
             this.mesa.criarMonteDescarte();
             this.mesa.criarMonteViloesAtivos();
             this.mesa.instanciaJogadores(nomeJogadores[0],nomeJogadores[1]);
+            this.receberEstadoDaMesa(mesa);
             this.atorNetGames.enviaJogada(varMesa);
         }else{
             System.out.println("EU NÃO INICIEI: "+this.nomeJogador);

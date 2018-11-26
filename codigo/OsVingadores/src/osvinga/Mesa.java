@@ -47,9 +47,10 @@ public class Mesa implements Jogada {
         if (tamanho == 0) {
             this.setComJogadorVencedor(comJogadorVencedor);
             jogadorVencedor = encontrarJogadorVencedor();
+            return jogadorVencedor;
         }
 
-        return jogadorVencedor;
+        return null;
     }
 
     public void setComJogadorVencedor(boolean aTemjogadorVencedor) {
@@ -201,17 +202,21 @@ public class Mesa implements Jogada {
         Jogador jogador1 = new Jogador(nomeJogador1);
         Monte deckJogador1 = new Monte();
         jogador1.setJogadorDaVez(true);
-        for (int cartasAdicionadas = 0; cartasAdicionadas > 5; cartasAdicionadas++) {
+        for (int cartasAdicionadas = 0; cartasAdicionadas < 5; cartasAdicionadas++) {
             deckJogador1.adicionarCarta(monteCompra.comprarCarta());
         }
         jogador1.setMaoJogador(deckJogador1);
         //Prepara o jogador2:
          Jogador jogador2 = new Jogador(nomeJogador2);
         Monte deckJogador2 = new Monte();
-        for (int cartasAdicionadas = 0; cartasAdicionadas > 5; cartasAdicionadas++) {
+        for (int cartasAdicionadas = 0; cartasAdicionadas < 5; cartasAdicionadas++) {
             deckJogador2.adicionarCarta(monteCompra.comprarCarta());
         }
         jogador2.setMaoJogador(deckJogador2);
+        //Adicionar viloes:
+        this.monteVilaosAtivos.adicionarCarta(this.monteVilao.comprarCarta());
+        this.monteVilaosAtivos.adicionarCarta(this.monteVilao.comprarCarta());
+        
         //Coloca na Mesa
         ArrayList<Jogador> jogadoresInstanciados;
         jogadoresInstanciados = new ArrayList<>();

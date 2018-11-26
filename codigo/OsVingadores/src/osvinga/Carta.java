@@ -1,6 +1,8 @@
 package osvinga;
 
-public class Carta {
+import br.ufsc.inf.leobr.cliente.Jogada;
+
+public class Carta implements Jogada {
 
     protected String nome;
     protected int poder;

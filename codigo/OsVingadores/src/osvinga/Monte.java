@@ -1,9 +1,10 @@
 package osvinga;
 
+import br.ufsc.inf.leobr.cliente.Jogada;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Monte {
+public class Monte implements Jogada{
 
     protected ArrayList<Carta> cartas;
 

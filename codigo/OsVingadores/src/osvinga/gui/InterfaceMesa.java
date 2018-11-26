@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import javax.swing.SwingWorker;
 import javax.swing.event.ListDataListener;
 import osvinga.Artefato;
 import osvinga.AtorJogador;
@@ -476,16 +477,17 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void atualizarInterface(Mesa mesa, int indexJogador) {
-        DefaultListModel modelo = (DefaultListModel) listaJogadorInstancia.getModel();
-        modelo.add(0, new Carta("Thanos", 100));
-        //Atulizar vilao1:
+        new SwingWorker() {
+            @Override
+            protected Object doInBackground() throws Exception {
+                //Atulizar vilao1:
         DefaultListModel modeloVilao1 = new DefaultListModel();
         modeloVilao1.add(0, mesa.getMonteVilaosAtivos().getCartas().get(0));
-        this.vilao1.setModel(modeloVilao1);
+        InterfaceMesa.this.vilao1.setModel(modeloVilao1);
         //Atulziar vilao 2:
         DefaultListModel modeloVilao2 = new DefaultListModel();
         modeloVilao2.add(0, mesa.getMonteVilaosAtivos().getCartas().get(1));
-        this.vilao2.setModel(modeloVilao2);
+        InterfaceMesa.this.vilao2.setModel(modeloVilao2);
         //Monte de descarte:
         DefaultListModel modeloMonteDescarte = new DefaultListModel();
         int iterador = 0;
@@ -493,7 +495,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
             modeloMonteDescarte.add(iterador, carta);
             iterador++;
         }
-        this.monteDescarte.setModel(modeloVilao2);
+        InterfaceMesa.this.monteDescarte.setModel(modeloMonteDescarte);
         //Atulizar a mostragem de cartas para o jogador dessa instancia do jogo:
         if (indexJogador == 0) {
             //Atulizar a lista de cartas do jogador:
@@ -503,7 +505,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaJogadorInstancia.add(iterador, carta);
                 iterador++;
             }
-            this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+            InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
 
             //Atulizar a lista de viloes do jogador:
             DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
@@ -512,7 +514,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaViloesJogadorInstancia.add(iterador, carta);
                 iterador++;
             }
-            this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+            InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
 
             //Atulizar a lista de cartas do jogador oponente:
             DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
@@ -521,7 +523,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
                 iterador++;
             }
-            this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+            InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
 
             //Atulizar a lista de viloes do jogador oponente:
             DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
@@ -530,7 +532,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaViloesJogadorOponente.add(iterador, carta);
                 iterador++;
             }
-            this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+            InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
 
         } else {
             //Atulizar a lista de cartas do jogador:
@@ -540,7 +542,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaJogadorInstancia.add(iterador, carta);
                 iterador++;
             }
-            this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+            InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
 
             //Atulizar a lista de viloes do jogador:
             DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
@@ -549,7 +551,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaViloesJogadorInstancia.add(iterador, carta);
                 iterador++;
             }
-            this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+            InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
 
             //Atulizar a lista de cartas do jogador oponente:
             DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
@@ -558,7 +560,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
                 iterador++;
             }
-            this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+            InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
 
             //Atulizar a lista de viloes do jogador oponente:
             DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
@@ -567,13 +569,18 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 modeloListaViloesJogadorOponente.add(iterador, carta);
                 iterador++;
             }
-            this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+            InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
         }
-
+        InterfaceMesa.this.repaint();
+                return null;
+            }
+            
+        }.execute();
+        
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!");
+        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor" ,JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void usarJoia(Artefato aCartaJoia) {
