@@ -15,6 +15,7 @@ public class ControladorJogo {
     public ControladorJogo() {
         this.atorJogador = new AtorJogador(this);
         this.atorNetGames = new AtorNetGames(this);
+        this.mesa = new Mesa();
         this.conectado = false;
     }
     
@@ -31,7 +32,6 @@ public class ControladorJogo {
             
         }
         this.conectado = resultado == 1;
-        System.out.println("resultado"+ this.nomeJogador+": " + resultado);
         this.atorJogador.mostrarResultadoConectar(resultado);
     }
 
@@ -280,13 +280,14 @@ public class ControladorJogo {
 
     public void receberSolicitacaoDeInicio(int posicao, String[] nomeJogadores) {
         if(posicao == 1){
-            Mesa mesa = this.getMesa();
+            System.out.print("EU INICIEI: "+this.nomeJogador);
+            Mesa varMesa = this.getMesa();
             this.mesa.criarMonteDeCompra();
             this.mesa.criarMonteVilao();
             this.mesa.criarMonteDescarte();
             this.mesa.criarMonteViloesAtivos();
-            this.mesa.instanciaJogadres(nomeJogadores[0],nomeJogadores[1]);
-            System.out.print("EU INICIEI: "+this.nomeJogador);
+            this.mesa.instanciaJogadores(nomeJogadores[0],nomeJogadores[1]);
+            this.atorNetGames.enviaJogada(varMesa);
         }else{
             System.out.println("EU NÃO INICIEI: "+this.nomeJogador);
         }
