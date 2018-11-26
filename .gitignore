@@ -6,3 +6,5 @@
 documentacao/\.lock
 
 documentacao/\.vpprefdata/
+
+*.tmp
