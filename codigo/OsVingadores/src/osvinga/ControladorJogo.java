@@ -280,6 +280,12 @@ public class ControladorJogo {
 
     public void receberSolicitacaoDeInicio(int posicao, String[] nomeJogadores) {
         if(posicao == 1){
+            Mesa mesa = this.getMesa();
+            this.mesa.criarMonteDeCompra();
+            this.mesa.criarMonteVilao();
+            this.mesa.criarMonteDescarte();
+            this.mesa.criarMonteViloesAtivos();
+            this.mesa.instanciaJogadres(nomeJogadores[0],nomeJogadores[1]);
             System.out.print("EU INICIEI: "+this.nomeJogador);
         }else{
             System.out.println("EU NÃO INICIEI: "+this.nomeJogador);

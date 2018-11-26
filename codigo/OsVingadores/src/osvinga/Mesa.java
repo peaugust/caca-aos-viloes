@@ -186,4 +186,19 @@ public class Mesa implements Jogada {
         this.setMonteVilao(novoMonteVilao);
     }
 
+    void criarMonteDescarte() {
+        Monte monteDesc = new Monte();
+        this.monteDescarte = monteDesc;
+    }
+
+    void criarMonteViloesAtivos() {
+        Monte monteViloesAtivosAux = new Monte();
+        this.setMonteVilaosAtivos(monteViloesAtivosAux);
+    }
+
+    void instanciaJogadres(String nomeJogador1, String nomeJogador2) {
+        //Prepara o jogador1:
+        
+    }
+
 }
