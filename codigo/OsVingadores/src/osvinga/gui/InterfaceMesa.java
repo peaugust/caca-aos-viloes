@@ -108,6 +108,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
         jScrollPane6.setViewportView(monteDescarte);
 
         vilao2.setModel(new DefaultListModel());
+        vilao2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vilao2MouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(vilao2);
 
         jButton2.setText("Pular Vez");
@@ -306,6 +311,30 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private void menuIniciarPartidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIniciarPartidaMouseClicked
         this.iniciarPartida();
     }//GEN-LAST:event_menuIniciarPartidaMouseClicked
+
+    private void vilao2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vilao2MouseClicked
+        DefaultListModel modeloHerois = (DefaultListModel) this.listaJogadorInstancia.getModel();
+        int[] indiceHeroi = listaJogadorInstancia.getSelectedIndices();
+        
+        DefaultListModel modeloViloes = (DefaultListModel) this.vilao2.getModel();
+        int indexVilao = this.vilao2.getSelectedIndex();
+        
+        Monte monte = new Monte();
+        
+        if (indexVilao >= 0) { //Recuperar o vilao
+            Personagem vilao = (Personagem) modeloViloes.getElementAt(indexVilao);
+            
+            if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
+                for (int i = 0; i < indiceHeroi.length; i++ ) {
+                    monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
+                }
+                
+                this.capturarVilao(vilao,monte);
+                
+            }
+            
+        }
+    }//GEN-LAST:event_vilao2MouseClicked
 
     /**
      * @param args the command line arguments

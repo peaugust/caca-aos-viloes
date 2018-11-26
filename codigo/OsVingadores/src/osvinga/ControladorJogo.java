@@ -152,7 +152,7 @@ public class ControladorJogo {
 
     public void receberEstadoDaMesa(Mesa mesa) {
         this.setMesa(mesa);
-        this.atorJogador.atualizarInterface(mesa,0);
+        this.atorJogador.atualizarInterface(mesa,1);
         this.verificarEstadoDoJogo();
     }
 
