@@ -245,12 +245,14 @@ public class ControladorJogo {
 
     public void atualizarEstadoJogo() {
         //Botar no diagrama:
-        if (this.mesa.getMonteVilaosAtivos().tamanhoMonte() < 2) {
-            Carta novoVilao = this.mesa.getMonteVilao().comprarCarta();
+        Monte monteVilaosAtivos = this.mesa.getMonteVilaosAtivos();
+        if (monteVilaosAtivos.tamanhoMonte() < 2) {
+            Monte monteVilao = this.mesa.getMonteVilao();
+            Carta novoVilao = monteVilao.comprarCarta();
             if (novoVilao == null) {
                 return;
             }
-            this.mesa.getMonteVilaosAtivos().adicionarCarta(novoVilao);
+            monteVilaosAtivos.adicionarCarta(novoVilao);
             return;
         }
         //-----
