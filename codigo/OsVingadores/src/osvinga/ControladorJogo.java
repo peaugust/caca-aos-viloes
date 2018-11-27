@@ -164,7 +164,8 @@ public class ControladorJogo {
     public void receberEstadoDaMesa(Mesa mesa) {
         this.mesa = mesa;
         this.comprarCartaParaJogadorAtivo();
-        this.atorJogador.atualizarInterface(mesa, 0);
+        int indexJogador = this.calcularIndexJogador();
+        this.atorJogador.atualizarInterface(mesa, indexJogador);
         this.verificarEstadoDoJogo();
     }
 
@@ -332,5 +333,18 @@ public class ControladorJogo {
         jogadorAtual.adicionarCartaAMaoDoJogador(cartaNova);
         
         return;
+        
+    }
+    
+    public int calcularIndexJogador (){
+        ArrayList<Jogador> colJogador = this.mesa.getColecaoJogadores();
+        int indexJogador;
+        if(this.nomeJogador.equals(colJogador.get(0).getNome())){
+            indexJogador = 0;
+        }else{
+            indexJogador = 1;
+        }
+        
+        return indexJogador;
     }
 }
