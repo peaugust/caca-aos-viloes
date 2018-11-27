@@ -207,6 +207,7 @@ public class ControladorJogo {
                 while (x < 3) {
                     Carta carta = this.mesa.comprarCartaDoMonteCompra();
                     jogador.adicionarCartaAMaoDoJogador(carta);
+                    x++;
                 }
                 break;
 
