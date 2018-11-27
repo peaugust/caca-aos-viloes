@@ -542,7 +542,6 @@ public class InterfaceMesa extends javax.swing.JFrame {
                         iterador++;
                     }
                     InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
-                    InterfaceMesa.this.listaViloesJogadorInstancia.validate();
 
                     //Atulizar a lista de cartas do jogador oponente:
                     DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
@@ -599,7 +598,6 @@ public class InterfaceMesa extends javax.swing.JFrame {
                     }
                     InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
                 }
-                InterfaceMesa.this.repaint();
 
     }
 
