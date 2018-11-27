@@ -164,6 +164,11 @@ public class Mesa implements Jogada {
         novoMonteCompra.adicionarCarta(new Personagem("Homem de Ferro e Homem-Aranha", 4, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Senhor das Estrelas e Gamora", 4, TipoPersonagem.HEROI));
         novoMonteCompra.adicionarCarta(new Personagem("Thor e Hulk", 4, TipoPersonagem.HEROI));
+        novoMonteCompra.adicionarCarta(new Artefato("JOIA DO ESPAÇO", 2, TipoArtefato.ESPACO));
+        novoMonteCompra.adicionarCarta(new Artefato("JOIA DO TEMPO", 3, TipoArtefato.TEMPO));
+        novoMonteCompra.adicionarCarta(new Artefato("JOIA DA MENTE", 4, TipoArtefato.MENTE));
+        novoMonteCompra.adicionarCarta(new Artefato("JOIA DA REALIDADE", 5, TipoArtefato.REALIDADE));
+        novoMonteCompra.adicionarCarta(new Artefato("JOIA DO PODER", 2, TipoArtefato.PODER));
 
         Collections.shuffle(novoMonteCompra.getCartas());
         this.setMonteCompra(novoMonteCompra);
