@@ -82,7 +82,7 @@ public class ControladorJogo {
     }
 
     public boolean passarTurno() {
-        boolean ehSeuTurno = this.verificarJogadorDoTurno();
+         boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
         if (ehSeuTurno) {
             boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
@@ -132,6 +132,8 @@ public class ControladorJogo {
             jogador.retirarConjuntoDaMao(cartasCapturar);
 
             this.getMesa().removerVilao(vilao);
+            
+            this.atualizarEstadoJogo(); //Colocar no diagrama
 
             resultado = true;
 
@@ -243,14 +245,13 @@ public class ControladorJogo {
 
     public void atualizarEstadoJogo() {
         //Botar no diagrama:
-        Personagem vilao1 = (Personagem) this.mesa.getMonteVilaosAtivos().getCartas().get(0);
-        Personagem vilao2 = (Personagem) this.mesa.getMonteVilaosAtivos().getCartas().get(1);
-        if (vilao1 == null) {
-            Carta novoVilao1 = this.mesa.getMonteVilao().comprarCarta();
-            this.mesa.monteVilaosAtivos.getCartas().set(0, (Personagem) novoVilao1);
-        } else if (vilao2 == null) {
-            Carta novoVilao2 = this.mesa.getMonteVilao().comprarCarta();
-            this.mesa.monteVilaosAtivos.getCartas().set(1, (Personagem) novoVilao2);
+        if (this.mesa.getMonteVilaosAtivos().tamanhoMonte() < 2) {
+            Carta novoVilao = this.mesa.getMonteVilao().comprarCarta();
+            if (novoVilao == null) {
+                return;
+            }
+            this.mesa.getMonteVilaosAtivos().adicionarCarta(novoVilao);
+            return;
         }
         //-----
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();

@@ -269,24 +269,24 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private void vilao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vilao1MouseClicked
         DefaultListModel modeloHerois = (DefaultListModel) this.listaJogadorInstancia.getModel();
         int[] indiceHeroi = listaJogadorInstancia.getSelectedIndices();
-        
+
         DefaultListModel modeloViloes = (DefaultListModel) this.vilao1.getModel();
         int indexVilao = this.vilao1.getSelectedIndex();
-        
+
         Monte monte = new Monte();
-        
+
         if (indexVilao >= 0) { //Recuperar o vilao
             Personagem vilao = (Personagem) modeloViloes.getElementAt(indexVilao);
-            
+
             if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
-                for (int i = 0; i < indiceHeroi.length; i++ ) {
+                for (int i = 0; i < indiceHeroi.length; i++) {
                     monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
                 }
-                
-                this.capturarVilao(vilao,monte);
-                
+
+                this.capturarVilao(vilao, monte);
+
             }
-            
+
         }
     }//GEN-LAST:event_vilao1MouseClicked
 
@@ -315,24 +315,24 @@ public class InterfaceMesa extends javax.swing.JFrame {
     private void vilao2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vilao2MouseClicked
         DefaultListModel modeloHerois = (DefaultListModel) this.listaJogadorInstancia.getModel();
         int[] indiceHeroi = listaJogadorInstancia.getSelectedIndices();
-        
+
         DefaultListModel modeloViloes = (DefaultListModel) this.vilao2.getModel();
         int indexVilao = this.vilao2.getSelectedIndex();
-        
+
         Monte monte = new Monte();
-        
+
         if (indexVilao >= 0) { //Recuperar o vilao
             Personagem vilao = (Personagem) modeloViloes.getElementAt(indexVilao);
-            
+
             if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
-                for (int i = 0; i < indiceHeroi.length; i++ ) {
+                for (int i = 0; i < indiceHeroi.length; i++) {
                     monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
                 }
-                
-                this.capturarVilao(vilao,monte);
-                
+
+                this.capturarVilao(vilao, monte);
+
             }
-            
+
         }
     }//GEN-LAST:event_vilao2MouseClicked
 
@@ -371,11 +371,11 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 inter.setVisible(true);
 
                 DefaultListModel modelo = (DefaultListModel) inter.listaJogadorInstancia.getModel();
-                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
-                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
-                modelo.add(0, new Personagem ("Thanos",100,TipoPersonagem.HEROI));
+                modelo.add(0, new Personagem("Thanos", 100, TipoPersonagem.HEROI));
+                modelo.add(0, new Personagem("Thanos", 100, TipoPersonagem.HEROI));
+                modelo.add(0, new Personagem("Thanos", 100, TipoPersonagem.HEROI));
                 DefaultListModel vilao1 = (DefaultListModel) inter.vilao1.getModel();
-                vilao1.add(0, new Personagem ("Thanos",100,TipoPersonagem.VILAO));
+                vilao1.add(0, new Personagem("Thanos", 100, TipoPersonagem.VILAO));
                 //DefaultListModel modelo = (DefaultListModel) jList7.getModel();
                 //modelo.add(0, new Carta ("Thanos",100));
                 System.out.println(inter.solictarEnderecoServidor());
@@ -446,7 +446,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarSucessoIniciarPartida() {
-      //  JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        //  JOptionPane.showConfirmDialog(null, "Sucesso em Iniciar a Partida.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarNaoConectado() {
@@ -506,110 +506,105 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void atualizarInterface(Mesa mesa, int indexJogador) {
-        new SwingWorker() {
-            @Override
-            protected Object doInBackground() throws Exception {
-                //Atulizar vilao1:
-        DefaultListModel modeloVilao1 = new DefaultListModel();
-        modeloVilao1.add(0, mesa.getMonteVilaosAtivos().getCartas().get(0));
-        InterfaceMesa.this.vilao1.setModel(modeloVilao1);
-        //Atulziar vilao 2:
-        DefaultListModel modeloVilao2 = new DefaultListModel();
-        modeloVilao2.add(0, mesa.getMonteVilaosAtivos().getCartas().get(1));
-        InterfaceMesa.this.vilao2.setModel(modeloVilao2);
-        //Monte de descarte:
-        DefaultListModel modeloMonteDescarte = new DefaultListModel();
-        int iterador = 0;
-        for (Carta carta : mesa.getMonteDescarte().getCartas()) {
-            modeloMonteDescarte.add(iterador, carta);
-            iterador++;
-        }
-        InterfaceMesa.this.monteDescarte.setModel(modeloMonteDescarte);
-        //Atulizar a mostragem de cartas para o jogador dessa instancia do jogo:
-        if (indexJogador == 0) {
-            //Atulizar a lista de cartas do jogador:
-            DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
-                modeloListaJogadorInstancia.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
-
-            //Atulizar a lista de viloes do jogador:
-            DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
-                modeloListaViloesJogadorInstancia.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
-
-            //Atulizar a lista de cartas do jogador oponente:
-            DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
-                modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
-                iterador++;
-            }
-            InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
-
-            //Atulizar a lista de viloes do jogador oponente:
-            DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
-                modeloListaViloesJogadorOponente.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
-
-        } else {
-            //Atulizar a lista de cartas do jogador:
-            DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
-                modeloListaJogadorInstancia.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
-
-            //Atulizar a lista de viloes do jogador:
-            DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
-                modeloListaViloesJogadorInstancia.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
-
-            //Atulizar a lista de cartas do jogador oponente:
-            DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
-                modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
-                iterador++;
-            }
-            InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
-
-            //Atulizar a lista de viloes do jogador oponente:
-            DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
-            iterador = 0;
-            for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
-                modeloListaViloesJogadorOponente.add(iterador, carta);
-                iterador++;
-            }
-            InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
-        }
-        InterfaceMesa.this.repaint();
-                return null;
-            }
-            
-        }.execute();
         
+                //Atulizar vilao1:
+                DefaultListModel modeloVilao1 = new DefaultListModel();
+                modeloVilao1.add(0, mesa.getMonteVilaosAtivos().getCartas().get(0));
+                InterfaceMesa.this.vilao1.setModel(modeloVilao1);
+                //Atulziar vilao 2:
+                DefaultListModel modeloVilao2 = new DefaultListModel();
+                modeloVilao2.add(0, mesa.getMonteVilaosAtivos().getCartas().get(1));
+                InterfaceMesa.this.vilao2.setModel(modeloVilao2);
+                //Monte de descarte:
+                DefaultListModel modeloMonteDescarte = new DefaultListModel();
+                int iterador = 0;
+                for (Carta carta : mesa.getMonteDescarte().getCartas()) {
+                    modeloMonteDescarte.add(iterador, carta);
+                    iterador++;
+                }
+                InterfaceMesa.this.monteDescarte.setModel(modeloMonteDescarte);
+                //Atulizar a mostragem de cartas para o jogador dessa instancia do jogo:
+                if (indexJogador == 0) {
+                    //Atulizar a lista de cartas do jogador:
+                    DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
+                        modeloListaJogadorInstancia.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+
+                    //Atulizar a lista de viloes do jogador:
+                    DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
+                        modeloListaViloesJogadorInstancia.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+                    InterfaceMesa.this.listaViloesJogadorInstancia.validate();
+
+                    //Atulizar a lista de cartas do jogador oponente:
+                    DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
+                        modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+
+                    //Atulizar a lista de viloes do jogador oponente:
+                    DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
+                        modeloListaViloesJogadorOponente.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+
+                } else {
+                    //Atulizar a lista de cartas do jogador:
+                    DefaultListModel modeloListaJogadorInstancia = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(1).getMao().getCartas()) {
+                        modeloListaJogadorInstancia.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaJogadorInstancia.setModel(modeloListaJogadorInstancia);
+
+                    //Atulizar a lista de viloes do jogador:
+                    DefaultListModel modeloListaViloesJogadorInstancia = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(1).getViloesCapturados().getCartas()) {
+                        modeloListaViloesJogadorInstancia.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaViloesJogadorInstancia.setModel(modeloListaViloesJogadorInstancia);
+
+                    //Atulizar a lista de cartas do jogador oponente:
+                    DefaultListModel modeloListaJogadorOponente = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(0).getMao().getCartas()) {
+                        modeloListaJogadorOponente.add(iterador, "Carta do Oponente");
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaJogadorOponente.setModel(modeloListaJogadorOponente);
+
+                    //Atulizar a lista de viloes do jogador oponente:
+                    DefaultListModel modeloListaViloesJogadorOponente = new DefaultListModel();
+                    iterador = 0;
+                    for (Carta carta : mesa.getJogadores().get(0).getViloesCapturados().getCartas()) {
+                        modeloListaViloesJogadorOponente.add(iterador, carta);
+                        iterador++;
+                    }
+                    InterfaceMesa.this.listaViloesJogadorOponente.setModel(modeloListaViloesJogadorOponente);
+                }
+                InterfaceMesa.this.repaint();
+
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor" ,JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void usarJoia(Artefato aCartaJoia) {
