@@ -25,7 +25,7 @@ public class ControladorJogo {
         if (!this.isConectado()) {
             String nomeServidor = this.atorJogador.solictarEnderecoServidor();
             String nomeJogador = this.atorJogador.solicitarNomeJogador();
-            this.nomeJogador = nomeJogador;
+            //this.nomeJogador = nomeJogador;
 
             this.setNomeJogador(nomeJogador);
 
