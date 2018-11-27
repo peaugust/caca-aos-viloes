@@ -13,6 +13,8 @@ para saber qual o index do Jogador atual
 # Pedro
 - Bloquear os botões da mesa enquanto não estiver conectado
 - Bloquear iniciar partida após a partida ter sido iniciada
+- Mudar Diagrama Tem Jogador Vencedor
+- Botar o nome do jogador após solicitar
 
 
 #Falcao
