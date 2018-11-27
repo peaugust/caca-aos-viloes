@@ -82,7 +82,7 @@ public class ControladorJogo {
     }
 
     public boolean passarTurno() {
-         boolean ehSeuTurno = this.verificarJogadorDoTurno();
+        boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
         if (ehSeuTurno) {
             boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
@@ -120,32 +120,36 @@ public class ControladorJogo {
     }
 
     public boolean capturarVilao(Monte cartasCapturar, Carta vilao) {
+        //Colocar no diagrama o if e o ehSeuTurno e arrumar o return, antes estava na chave de cima:
         boolean resultado = false;
-        int somatorioDePontos = this.calcularSomatorioDePoder(cartasCapturar);
-        int poderVilao = vilao.getPoder();
+        boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
-        if (somatorioDePontos >= poderVilao) {
-            Jogador jogador = this.recuperarInstanciaJogador();
+        if (ehSeuTurno) {
+            int somatorioDePontos = this.calcularSomatorioDePoder(cartasCapturar);
+            int poderVilao = vilao.getPoder();
 
-            jogador.adicionarVilao(vilao);
-            jogador.retirarConjuntoDaMao(cartasCapturar);
+            if (somatorioDePontos >= poderVilao) {
+                Jogador jogador = this.recuperarInstanciaJogador();
 
-            this.getMesa().removerVilao(vilao);
-            //Colocar no diagrama:
-            this.atualizarEstadoJogo();
-            int index = this.calcularIndexJogador();
-            this.atorJogador.atualizarInterface(this.mesa, index);
-            this.enviarJogada(this.mesa);
-            //
+                jogador.adicionarVilao(vilao);
+                jogador.retirarConjuntoDaMao(cartasCapturar);
 
-            resultado = true;
+                this.getMesa().removerVilao(vilao);
+                //Colocar no diagrama:
+                this.atualizarEstadoJogo();
+                int index = this.calcularIndexJogador();
+                this.atorJogador.atualizarInterface(this.mesa, index);
+                this.enviarJogada(this.mesa);
+                //
+
+                resultado = true;
+
+            }
+
+            this.verificarEstadoDoJogo();
 
         }
-
-        this.verificarEstadoDoJogo();
-
         return resultado;
-
     }
 
     public int calcularSomatorioDePoder(Monte cartasCapturar) {
@@ -191,86 +195,91 @@ public class ControladorJogo {
     }
 
     public void usarJoia(Artefato cartaJoia) {
-        TipoArtefato tipo = this.verificarQualArtefato(cartaJoia);
-        Jogador jogador = this.recuperarInstanciaJogador();
-        ArrayList<Jogador> jogadores = mesa.getColecaoJogadores();
-        switch (tipo) {
-            case MENTE:
-                //Inserir no diagrama
-                jogador.getMao().removerCarta(cartaJoia);
-                //
-                this.mesa.trocarMaosDosJogadores();
-                break;
+        //Botar no diagrama o if + o ehSeuTurno:
+        boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
-            case TEMPO:
-                jogador = this.recuperarInstanciaJogador();
-                //Inserir no diagrama
-                jogador.getMao().removerCarta(cartaJoia);
-                //
-                int x = 0;
-                while (x < 3) {
-                    Carta carta = this.mesa.comprarCartaDoMonteCompra();
+        if (ehSeuTurno) {
+            TipoArtefato tipo = this.verificarQualArtefato(cartaJoia);
+            Jogador jogador = this.recuperarInstanciaJogador();
+            ArrayList<Jogador> jogadores = mesa.getColecaoJogadores();
+            switch (tipo) {
+                case MENTE:
+                    //Inserir no diagrama
+                    jogador.getMao().removerCarta(cartaJoia);
+                    //
+                    this.mesa.trocarMaosDosJogadores();
+                    break;
+
+                case TEMPO:
+                    jogador = this.recuperarInstanciaJogador();
+                    //Inserir no diagrama
+                    jogador.getMao().removerCarta(cartaJoia);
+                    //
+                    int x = 0;
+                    while (x < 3) {
+                        Carta carta = this.mesa.comprarCartaDoMonteCompra();
+                        jogador.adicionarCartaAMaoDoJogador(carta);
+                        x++;
+                    }
+                    break;
+
+                case ESPACO:
+                    jogador = this.recuperarInstanciaJogador();
+                    //Inserir no diagrama
+                    jogador.getMao().removerCarta(cartaJoia);
+                    //
+                    Carta carta = this.getMesa().comprarCartaDoMonteCompra();
                     jogador.adicionarCartaAMaoDoJogador(carta);
-                    x++;
-                }
-                break;
+                    //Inserir no diagrama
+                    int index = this.calcularIndexJogador();
+                    this.atorJogador.atualizarInterface(this.mesa, index);
+                    //
+                    return;
 
-            case ESPACO:
-                jogador = this.recuperarInstanciaJogador();
-                //Inserir no diagrama
-                jogador.getMao().removerCarta(cartaJoia);
-                //
-                Carta carta = this.getMesa().comprarCartaDoMonteCompra();
-                jogador.adicionarCartaAMaoDoJogador(carta);
-                //Inserir no diagrama
-                int index = this.calcularIndexJogador();
-                this.atorJogador.atualizarInterface(this.mesa, index);
-                //
-                return;
-
-            case REALIDADE:
-                jogador = this.recuperarInstanciaJogador();
-                jogadores = mesa.getColecaoJogadores();
-                //Inserir no diagrama
-                jogador.getMao().removerCarta(cartaJoia);
-                //
-                for (Jogador jogadorIteracao : jogadores) {
-                    boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
-                    if (!ehSeuNome) {
-                        for (int i = 0; i < 3; i++) {
-                            jogadorIteracao.removerCartaAleatoriamente();
+                case REALIDADE:
+                    jogador = this.recuperarInstanciaJogador();
+                    jogadores = mesa.getColecaoJogadores();
+                    //Inserir no diagrama
+                    jogador.getMao().removerCarta(cartaJoia);
+                    //
+                    for (Jogador jogadorIteracao : jogadores) {
+                        boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
+                        if (!ehSeuNome) {
+                            for (int i = 0; i < 3; i++) {
+                                jogadorIteracao.removerCartaAleatoriamente();
+                            }
                         }
                     }
-                }
-                break;
+                    break;
 
-            case PODER:
-                jogador = this.recuperarInstanciaJogador();
-                jogadores = mesa.getColecaoJogadores();
-                //Inserir no diagrama
-                jogador.getMao().removerCarta(cartaJoia);
-                //
-                Carta cartaAux;
-                for (Jogador jogadorIteracao : jogadores) {
-                    boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
-                    if (!ehSeuNome) {
-                        cartaAux = jogadorIteracao.removerVilaoAleatoriamente();
-                        //Colocar no diagrama:
-                        if (cartaAux == null) {
-                            this.atorJogador.notificarNaoTemVilaoRoubar();
-                            return;
+                case PODER:
+                    jogador = this.recuperarInstanciaJogador();
+                    jogadores = mesa.getColecaoJogadores();
+                    //Inserir no diagrama
+                    jogador.getMao().removerCarta(cartaJoia);
+                    //
+                    Carta cartaAux;
+                    for (Jogador jogadorIteracao : jogadores) {
+                        boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
+                        if (!ehSeuNome) {
+                            cartaAux = jogadorIteracao.removerVilaoAleatoriamente();
+                            //Colocar no diagrama:
+                            if (cartaAux == null) {
+                                this.atorJogador.notificarNaoTemVilaoRoubar();
+                                return;
+                            }
+                            //
+                            jogador.adicionarVilao(cartaAux);
                         }
-                        //
-                        jogador.adicionarVilao(cartaAux);
                     }
-                }
-                break;
+                    break;
+            }
+            //Colocar no diagrama
+            this.atualizarEstadoJogo();
+            int index = this.calcularIndexJogador();
+            this.atorJogador.atualizarInterface(this.mesa, index);
+            this.enviarJogada(this.mesa);
         }
-        //Colocar no diagrama
-        this.atualizarEstadoJogo();
-        int index = this.calcularIndexJogador();
-        this.atorJogador.atualizarInterface(this.mesa, index);
-        this.enviarJogada(this.mesa);
     }
 
     public TipoArtefato verificarQualArtefato(Artefato carta) {
@@ -295,7 +304,7 @@ public class ControladorJogo {
             this.mesa.criarMonteDeCompra();
         }
         //
-        
+
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
         String nome = jogadorPrincipal.getNomeJogador();
         ArrayList<Jogador> jogadores = this.mesa.getColecaoJogadores();
@@ -361,7 +370,7 @@ public class ControladorJogo {
         jogadores.remove(0);
         jogadores.add(0, jogador1);
         jogadores.add(1, jogador2);
-        
+
         return;
     }
 
@@ -370,20 +379,21 @@ public class ControladorJogo {
         Mesa mesa = this.getMesa();
         Carta cartaNova = mesa.comprarCartaDoMonteCompra();
         jogadorAtual.adicionarCartaAMaoDoJogador(cartaNova);
-        
+
         return;
-        
+
     }
+
     //Adicionar no diagrama
-    public int calcularIndexJogador (){
+    public int calcularIndexJogador() {
         ArrayList<Jogador> colJogador = this.mesa.getColecaoJogadores();
         int indexJogador;
-        if(this.nomeJogador.equals(colJogador.get(0).getNome())){
+        if (this.nomeJogador.equals(colJogador.get(0).getNome())) {
             indexJogador = 0;
-        }else{
+        } else {
             indexJogador = 1;
         }
-        
+
         return indexJogador;
     }
 }
