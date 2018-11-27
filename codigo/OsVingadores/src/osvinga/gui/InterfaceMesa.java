@@ -423,16 +423,16 @@ public class InterfaceMesa extends javax.swing.JFrame {
     public void mostrarResultadoConectar(int resultado) {
         switch (resultado) {
             case 0:
-                JOptionPane.showConfirmDialog(null, "Falha na Conexão.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "Falha na Conexão.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
             case 1:
-                JOptionPane.showConfirmDialog(null, "Sucesso em Conectar.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "Sucesso em Conectar.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
             case 2:
-                JOptionPane.showConfirmDialog(null, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "Já Conectado.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
             case 3:
-                JOptionPane.showConfirmDialog(null, "Arquivo Multiplayer Ausente.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "Arquivo Multiplayer Ausente.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 break;
         }
     }
@@ -442,7 +442,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarPartidaEmAndamento() {
-        JOptionPane.showConfirmDialog(null, "Partida em Andamento.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(this, "Partida em Andamento.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void notificarSucessoIniciarPartida() {
@@ -450,7 +450,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarNaoConectado() {
-        JOptionPane.showConfirmDialog(null, "Jogador não está conecatdo no servidor.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(this, "Jogador não está conecatdo no servidor.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void desconectar() {
@@ -459,7 +459,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     public void notificarDesconexao(boolean desconectou) {
         if (desconectou) {
-            JOptionPane.showConfirmDialog(null, "Houve uma desconexão", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Houve uma desconexão", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -468,7 +468,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean solicitarConfirmacaoPassarTurno() {
-        int escolha = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja passar o seu turno?", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        int escolha = JOptionPane.showConfirmDialog(this, "Você tem certeza que deseja passar o seu turno?", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (escolha == JOptionPane.YES_OPTION) {
             return true;
         } else {
@@ -478,9 +478,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     public void notificarPassarTurno(boolean resultado) {
         if (resultado) {
-            JOptionPane.showConfirmDialog(null, "Você passou seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Você passou seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         } else {
-            JOptionPane.showConfirmDialog(null, "Não é o seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Não é o seu turno.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -489,7 +489,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean solicitarConfirmacaoCapturarVilao() {
-        int reply = JOptionPane.showConfirmDialog(null, "Deseja capturar esse vilão??", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        int reply = JOptionPane.showConfirmDialog(this, "Deseja capturar esse vilão??", "AVISO", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (reply == JOptionPane.YES_OPTION) {
             return true;
         } else {
@@ -499,9 +499,9 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
     public void informarCaputrarVilao(boolean mensagem) {
         if (mensagem) {
-            JOptionPane.showConfirmDialog(null, "Você capturou o vilão com sucesso!", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Você capturou o vilão com sucesso!", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         } else {
-            JOptionPane.showConfirmDialog(null, "Não foi possível capturar o vilão :(.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Não foi possível capturar o vilão :(.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -602,7 +602,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(null, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(this, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void usarJoia(Artefato aCartaJoia) {
@@ -613,7 +613,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public boolean confirmarUtilizacaoJoia() {
-        int reply = JOptionPane.showConfirmDialog(null, "Deseja utilizar o efeito da Joia??", "Confirmar a utilização", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        int reply = JOptionPane.showConfirmDialog(this, "Deseja utilizar o efeito da Joia??", "Confirmar a utilização", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (reply == JOptionPane.YES_OPTION) {
             return true;
         }
