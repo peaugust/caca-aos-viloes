@@ -164,6 +164,7 @@ public class ControladorJogo {
     public void receberEstadoDaMesa(Mesa mesa) {
         this.mesa = mesa;
         this.comprarCartaParaJogadorAtivo();
+        //AdicionarNoDiagrama
         int indexJogador = this.calcularIndexJogador();
         this.atorJogador.atualizarInterface(mesa, indexJogador);
         this.verificarEstadoDoJogo();
@@ -335,7 +336,7 @@ public class ControladorJogo {
         return;
         
     }
-    
+    //Adicionar no diagrama
     public int calcularIndexJogador (){
         ArrayList<Jogador> colJogador = this.mesa.getColecaoJogadores();
         int indexJogador;
