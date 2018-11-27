@@ -86,10 +86,9 @@ public class ControladorJogo {
 
         if (ehSeuTurno) {
             boolean passarTurno = this.atorJogador.solicitarConfirmacaoPassarTurno();
-            
-            this.passarTurnoDosJogadores();
 
             if (passarTurno) {
+                this.passarTurnoDosJogadores();
                 this.verificarEstadoDoJogo();
                 //Adicionar na modelagem
                 this.enviarJogada(this.mesa);
@@ -187,18 +186,23 @@ public class ControladorJogo {
         return this.verificarEstadoDoJogo();
     }
 
-    public void usarJoia(Artefato aCartaJoia) {
-        TipoArtefato tipo = this.verificarQualArtefato(aCartaJoia);
+    public void usarJoia(Artefato cartaJoia) {
+        TipoArtefato tipo = this.verificarQualArtefato(cartaJoia);
         Jogador jogador = this.recuperarInstanciaJogador();
         ArrayList<Jogador> jogadores = mesa.getColecaoJogadores();
         switch (tipo) {
             case MENTE:
+                //Inserir no diagrama
+                jogador.getMao().removerCarta(cartaJoia);
+                //
                 this.mesa.trocarMaosDosJogadores();
                 break;
 
             case TEMPO:
-
                 jogador = this.recuperarInstanciaJogador();
+                //Inserir no diagrama
+                jogador.getMao().removerCarta(cartaJoia);
+                //
                 int x = 0;
                 while (x < 3) {
                     Carta carta = this.mesa.comprarCartaDoMonteCompra();
@@ -208,13 +212,23 @@ public class ControladorJogo {
 
             case ESPACO:
                 jogador = this.recuperarInstanciaJogador();
+                //Inserir no diagrama
+                jogador.getMao().removerCarta(cartaJoia);
+                //
                 Carta carta = this.getMesa().comprarCartaDoMonteCompra();
                 jogador.adicionarCartaAMaoDoJogador(carta);
-                break;
+                //Inserir no diagrama
+                int index = this.calcularIndexJogador();
+                this.atorJogador.atualizarInterface(this.mesa, index);
+                //
+                return;
 
             case REALIDADE:
                 jogador = this.recuperarInstanciaJogador();
                 jogadores = mesa.getColecaoJogadores();
+                //Inserir no diagrama
+                jogador.getMao().removerCarta(cartaJoia);
+                //
                 for (Jogador jogadorIteracao : jogadores) {
                     boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
                     if (!ehSeuNome) {
@@ -228,17 +242,27 @@ public class ControladorJogo {
             case PODER:
                 jogador = this.recuperarInstanciaJogador();
                 jogadores = mesa.getColecaoJogadores();
+                //Inserir no diagrama
+                jogador.getMao().removerCarta(cartaJoia);
+                //
                 Carta cartaAux;
                 for (Jogador jogadorIteracao : jogadores) {
                     boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
                     if (!ehSeuNome) {
                         cartaAux = jogadorIteracao.removerVilaoAleatoriamente();
+                        //Colocar no diagrama:
+                        if (cartaAux == null) {
+                            this.atorJogador.notificarNaoTemVilaoRoubar();
+                            return;
+                        }
+                        //
                         jogador.adicionarVilao(cartaAux);
                     }
                 }
                 break;
         }
-
+        //Colocar no diagrama
+        this.atualizarEstadoJogo();
         this.enviarJogada(this.mesa);
     }
 

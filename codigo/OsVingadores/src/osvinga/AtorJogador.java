@@ -116,4 +116,8 @@ public class AtorJogador {
     public boolean confirmarUtilizacaoJoia() {
         return this.interfaceMesa.confirmarUtilizacaoJoia();
     }
+
+    void notificarNaoTemVilaoRoubar() {
+        this.interfaceMesa.notificarNaoTemVilaoRoubar();
+    }
 }

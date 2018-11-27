@@ -619,4 +619,8 @@ public class InterfaceMesa extends javax.swing.JFrame {
         }
         return false;
     }
+
+    public void notificarNaoTemVilaoRoubar() {
+        JOptionPane.showConfirmDialog(this, "O Jogador Oponente não possui Vilões para você poder usar essa carta.", "AVISO", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+    }
 }
