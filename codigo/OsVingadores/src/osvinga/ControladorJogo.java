@@ -40,8 +40,8 @@ public class ControladorJogo {
         return this.conectado;
     }
 
-    public void setNomeJogador(String aNomeJogador) {
-        this.nomeJogador = aNomeJogador;
+    public void setNomeJogador(String nomeJogador) {
+        this.nomeJogador = nomeJogador;
     }
 
     public void iniciarPartida() {
@@ -91,6 +91,8 @@ public class ControladorJogo {
 
             if (passarTurno) {
                 this.verificarEstadoDoJogo();
+                //Adicionar na modelagem
+                this.enviarJogada(this.mesa);
                 return true;
             }
         }
