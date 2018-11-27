@@ -10,6 +10,8 @@ para saber qual o index do Jogador atual
 -Alterar o capturar vilao, agora ele não pede para selecionar os herois, eles já são enviados para o metodo *
 -No usar joia do poder, é necessário adicionar as cartas reitradas ao monte de descarte
 -encontrarJogadorVencedor() implementado esta diferente daquele da modelagem
+-Modificar o diagrama o modificarEstadoDoJogo
+-Modificar o capturarVilao()
 
 # Pedro
 - Bloquear os botões da mesa enquanto não estiver conectado
