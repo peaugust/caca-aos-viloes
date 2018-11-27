@@ -280,7 +280,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
             if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
                 for (int i = 0; i < indiceHeroi.length; i++) {
-                    monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
+                    monte.adicionarCarta((Carta) modeloHerois.getElementAt(indiceHeroi[i]));
                 }
 
                 this.capturarVilao(vilao, monte);
@@ -326,7 +326,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
 
             if (indiceHeroi.length >= 0) {//Pegar os herois selecionados:
                 for (int i = 0; i < indiceHeroi.length; i++) {
-                    monte.adicionarCarta((Personagem) modeloHerois.getElementAt(indiceHeroi[i]));
+                    monte.adicionarCarta((Carta) modeloHerois.getElementAt(indiceHeroi[i]));
                 }
 
                 this.capturarVilao(vilao, monte);

@@ -131,8 +131,12 @@ public class ControladorJogo {
             jogador.retirarConjuntoDaMao(cartasCapturar);
 
             this.getMesa().removerVilao(vilao);
-            
-            this.atualizarEstadoJogo(); //Colocar no diagrama
+            //Colocar no diagrama:
+            this.atualizarEstadoJogo();
+            int index = this.calcularIndexJogador();
+            this.atorJogador.atualizarInterface(this.mesa, index);
+            this.enviarJogada(this.mesa);
+            //
 
             resultado = true;
 
@@ -264,6 +268,8 @@ public class ControladorJogo {
         }
         //Colocar no diagrama
         this.atualizarEstadoJogo();
+        int index = this.calcularIndexJogador();
+        this.atorJogador.atualizarInterface(this.mesa, index);
         this.enviarJogada(this.mesa);
     }
 
@@ -282,6 +288,13 @@ public class ControladorJogo {
             monteVilaosAtivos.adicionarCarta(novoVilao);
             return;
         }
+        //Colocar no diagrama:
+        //Verificar se tem cartars no baralho:
+        int tamanhoMonte = this.mesa.monteCompra.tamanhoMonte();
+        if (tamanhoMonte == 0) {
+            this.mesa.criarMonteDeCompra();
+        }
+        //
         
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
         String nome = jogadorPrincipal.getNomeJogador();

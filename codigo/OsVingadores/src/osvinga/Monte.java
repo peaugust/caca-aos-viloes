@@ -51,7 +51,7 @@ public class Monte implements Jogada{
     
     public Carta removerCartaAleatoriamente() {
         Random random = new Random();
-        int indexAleatorio = random.nextInt(this.tamanhoMonte()+1);
+        int indexAleatorio = random.nextInt(this.tamanhoMonte());
         
         return this.cartas.remove(indexAleatorio);
     }
