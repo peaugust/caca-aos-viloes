@@ -6,7 +6,7 @@
 # DNS name or to 0.0.0.0 to bind to all of the server's IP addresses.  Note
 # that binding to localhost may mean that remote client connections are
 # prohibited. 
-server.host=localhost
+server.host=192.168.137.1
 server.port=1099
 
 # Sequentally numbered list of server handler classnames.
