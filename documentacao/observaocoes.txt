@@ -12,6 +12,7 @@ para saber qual o index do Jogador atual
 -encontrarJogadorVencedor() implementado esta diferente daquele da modelagem
 -Modificar o diagrama o modificarEstadoDoJogo
 -Modificar o capturarVilao()
+-receberEstadoDaMesa vai implementar um metodo chamado comprarCartaParaJogadorAtivo(). Colocar isso no diagrama
 
 # Pedro
 - Bloquear os botões da mesa enquanto não estiver conectado

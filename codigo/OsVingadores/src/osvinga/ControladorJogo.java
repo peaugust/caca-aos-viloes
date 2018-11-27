@@ -163,6 +163,7 @@ public class ControladorJogo {
     //Importante
     public void receberEstadoDaMesa(Mesa mesa) {
         this.mesa = mesa;
+        this.comprarCartaParaJogadorAtivo();
         this.atorJogador.atualizarInterface(mesa, 0);
         this.verificarEstadoDoJogo();
     }
@@ -244,7 +245,6 @@ public class ControladorJogo {
     }
 
     public void atualizarEstadoJogo() {
-        //Botar no diagrama:
         Monte monteVilaosAtivos = this.mesa.getMonteVilaosAtivos();
         if (monteVilaosAtivos.tamanhoMonte() < 2) {
             Monte monteVilao = this.mesa.getMonteVilao();
@@ -255,7 +255,7 @@ public class ControladorJogo {
             monteVilaosAtivos.adicionarCarta(novoVilao);
             return;
         }
-        //-----
+        
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
         String nome = jogadorPrincipal.getNomeJogador();
         ArrayList<Jogador> jogadores = this.mesa.getColecaoJogadores();
@@ -321,6 +321,15 @@ public class ControladorJogo {
         jogadores.remove(0);
         jogadores.add(0, jogador1);
         jogadores.add(1, jogador2);
+        
+        return;
+    }
+
+    private void comprarCartaParaJogadorAtivo() {
+        Jogador jogadorAtual = this.recuperarInstanciaJogador();
+        Mesa mesa = this.getMesa();
+        Carta cartaNova = mesa.comprarCartaDoMonteCompra();
+        jogadorAtual.adicionarCartaAMaoDoJogador(cartaNova);
         
         return;
     }
