@@ -1,14 +1,15 @@
 # Venancio
 -O diagrama de atividades do capturar vilao precisa ser revisado
--Torcar mao dos jogadores em mesa precisa ser revisado
+-Torcar mao dos jogadores em mesa precisa ser revisado *
 -verificarJogadorDoTurno pode ser um diagrama de atividades para metodos
 -Refazer o diagrama verificarOEstadoDoJogo
--Na interfaceMesa, adicionar os atributos na modelagem
--Foi modificado o verificar estado do jogo, ele atualiza os jogadores, colocando de quem é a vez de jogar
+-Na interfaceMesa, adicionar os atributos na modelagem *
+-Foi modificado o verificar estado do jogo, ele atualiza os jogadores, colocando de quem é a vez de jogar *
 -Na interfaceMesa, para atualizarInterface(), vou precisar saber do Index do jogdar, alterar isso na modelagem. Para tanto, deve ser alterado o diagrama receberEstadoDaMesa
 para saber qual o index do Jogador atual
 -Alterar o capturar vilao, agora ele não pede para selecionar os herois, eles já são enviados para o metodo *
 -No usar joia do poder, é necessário adicionar as cartas reitradas ao monte de descarte
+-encontrarJogadorVencedor() implementado esta diferente daquele da modelagem
 
 # Pedro
 - Bloquear os botões da mesa enquanto não estiver conectado

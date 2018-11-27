@@ -166,9 +166,9 @@ public class ControladorJogo {
     }
 
     public boolean verificarEstadoDoJogo() {
-        Jogador jogadorRef = this.mesa.temJogadorVencedor();
-        if (jogadorRef != null) {
-            this.atorJogador.notificarJogadorVencedor(jogadorRef);
+        Jogador jogadorVencedor = this.mesa.temJogadorVencedor();
+        if (jogadorVencedor != null) {
+            this.atorJogador.notificarJogadorVencedor(jogadorVencedor);
             return true;
         }
         return false;

@@ -27,7 +27,7 @@ import osvinga.TipoPersonagem;
 public class InterfaceMesa extends javax.swing.JFrame {
 
     //Atributos:
-    public AtorJogador atorJogador;
+    protected AtorJogador atorJogador;
 
     /**
      * Creates new form MeuSwingzao
