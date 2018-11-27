@@ -324,4 +324,15 @@ public class ControladorJogo {
         
         return;
     }
+    
+    public void atualizarInterface(){
+        ArrayList<Jogador> colJogador = this.mesa.getColecaoJogadores();
+        int indexJogador;
+        if(this.nomeJogador == colJogador.get(0).getNome()){
+            indexJogador = 0;
+        }else{
+            indexJogador = 1;
+        }
+        this.atorJogador.atualizarInterface(this.mesa, indexJogador);
+    }
 }
