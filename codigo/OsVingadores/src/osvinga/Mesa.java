@@ -53,8 +53,8 @@ public class Mesa implements Jogada {
         return null;
     }
 
-    public void setComJogadorVencedor(boolean aTemjogadorVencedor) {
-        this.comJogadorVencedor = aTemjogadorVencedor;
+    public void setComJogadorVencedor(boolean temjogadorVencedor) {
+        this.comJogadorVencedor = temjogadorVencedor;
     }
 
     public Jogador encontrarJogadorVencedor() {
