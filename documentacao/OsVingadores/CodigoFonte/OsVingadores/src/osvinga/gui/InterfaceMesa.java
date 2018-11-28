@@ -74,6 +74,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
         menuIniciarPartida = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Os Vingadores");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -614,7 +615,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(this, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(this, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void usarJoia(Artefato aCartaJoia) {

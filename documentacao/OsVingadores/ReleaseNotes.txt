@@ -60,7 +60,7 @@ Para executar o jogo é necessário:
 	- Usar joia do poder: Clique duplo em cima das cartas que estão em letra caixa alta. Elas possuem efeitos especiais, cada uma com o seu efeito.
 	- Pular o turno: Pula sua vez de jogada, passando o poder de fazer uma ação para o outro jogador.
 - Ao capturar um vilão ou usar uma joia do poder, o turno do jogador é passado.
-- É vencedor aquele que conseguir ter o maior somátorio de poder das suas cartas vilões capturados e não tiver mais vilões para serem capturados.
+- É vencedor aquele que conseguir ter o maior somatorio de poder das suas cartas vilões capturados e o jogo não tiver mais vilões para serem capturados.
 
 ==================================================================
 4. Restrições
