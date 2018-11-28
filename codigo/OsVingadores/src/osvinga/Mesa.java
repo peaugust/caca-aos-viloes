@@ -215,14 +215,14 @@ public class Mesa implements Jogada {
         Jogador jogador1 = new Jogador(nomeJogador1);
         Monte deckJogador1 = new Monte();
         jogador1.setJogadorDaVez(true);
-        for (int cartasAdicionadas = 0; cartasAdicionadas < 5; cartasAdicionadas++) {
+        for (int cartasAdicionadas = 0; cartasAdicionadas < 4 ; cartasAdicionadas++) {
             deckJogador1.adicionarCarta(monteCompra.comprarCarta());
         }
         jogador1.setMaoJogador(deckJogador1);
         //Prepara o jogador2:
          Jogador jogador2 = new Jogador(nomeJogador2);
         Monte deckJogador2 = new Monte();
-        for (int cartasAdicionadas = 0; cartasAdicionadas < 5; cartasAdicionadas++) {
+        for (int cartasAdicionadas = 0; cartasAdicionadas < 4; cartasAdicionadas++) {
             deckJogador2.adicionarCarta(monteCompra.comprarCarta());
         }
         jogador2.setMaoJogador(deckJogador2);
