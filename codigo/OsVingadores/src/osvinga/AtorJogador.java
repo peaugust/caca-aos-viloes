@@ -5,8 +5,8 @@ import osvinga.gui.InterfaceMesa;
 public class AtorJogador {
 
     //Atributos:
-    public InterfaceMesa interfaceMesa;
-    public ControladorJogo controladorJogo;
+    protected InterfaceMesa interfaceMesa;
+    protected ControladorJogo controladorJogo;
 
     //Construtor:
     public AtorJogador(ControladorJogo controladorJogo) {
@@ -117,7 +117,7 @@ public class AtorJogador {
         return this.interfaceMesa.confirmarUtilizacaoJoia();
     }
 
-    void notificarNaoTemVilaoRoubar() {
+    public void notificarNaoTemVilaoRoubar() {
         this.interfaceMesa.notificarNaoTemVilaoRoubar();
     }
 }

@@ -30,6 +30,6 @@ public class Carta implements Jogada {
 
     @Override
     public String toString() {
-        return this.nome + " de poder: " + this.poder;
+        return "|" + this.nome + " de poder: " + this.poder + "|";
     }
 }

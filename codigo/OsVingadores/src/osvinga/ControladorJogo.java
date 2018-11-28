@@ -298,13 +298,11 @@ public class ControladorJogo {
             }
             monteVilaosAtivos.adicionarCarta(novoVilao);
         }
-        //Colocar no diagrama:
         //Verificar se tem cartars no baralho:
-        int tamanhoMonte = this.mesa.monteCompra.tamanhoMonte();
+        int tamanhoMonte = this.mesa.getMonteCompra().tamanhoMonte();
         if (tamanhoMonte == 0) {
             this.mesa.criarMonteDeCompra();
         }
-        //
 
         Jogador jogadorPrincipal = this.recuperarInstanciaJogador();
         String nome = jogadorPrincipal.getNomeJogador();

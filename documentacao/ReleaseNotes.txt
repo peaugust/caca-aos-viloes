@@ -1,0 +1,82 @@
+==================================================================
+==========================Release Notes==========================
+==================================================================
+Os Vingadores v1.0  28/11/2018
+
+Projeto desenvolvidor por:
+-João Vítor Demaria Venâncio
+-Lucas Nascimento Falcão
+-Pedro Augusto Freddi Rodrigues
+==================================================================
+
+Sumário
+
+1. Requisitos do sistema
+2. Instalação
+3. Versão atual e seus aspectos
+4. Restrições
+5. Melhorias para próximas versões
+
+==================================================================
+1. Requisitos do sistema
+==================================================================
+
+Para executar o jogo é necessário:
+- Java Runtime Environment (JRE) instalado na máquina, na versão 8 ou superior
+- Conexão com a internet para jogar com outros usuários em rede.
+
+==================================================================
+2. Instalação e execução
+==================================================================
+
+- Descompactar o arquivo OsVingadores.zip que contém:
+	 pasta: Projeto
+	 pasta: Documentacao
+	 pasta: Executavel
+	 ReleaseNotes.txt
+- Não é necessário instalar o jogo para que ele seja executado.
+- Para executar o jogo há duas possibilidades:
+	1º - Diretamente no arquivo "OsVingadores.jar" (que consta na pasta Executavel) considerando as restrições:
+	Se  "Java platform SE binary" estiver definido como programa padrão para abrir arquivo: Dar duplo clique em "OsVingadores.jar";
+	Caso contrário: Clicar com o botão direito do mouse no arquivo "OsVingadores.jar" e clicar em "Abrir com..." para procurar o JRE 8 em seu computador. 
+
+	2º - Através da linha de comando:
+	No diretório onde consta o arquivo "OsVingadores.jar" executar o comando: java -jar OsVingadores.jar
+
+==================================================================
+3. Versão atual e seus aspectos
+==================================================================
+
+- O jogo encontra-se na sua primeira versão com uma interface simples e funcional.
+	- As cartas são Strings clicaveis na tela.
+- Número de jogadores suportado: 2.
+- Ambos jogadores devem se conectar ao mesmo servidor, sendo eles ou o "localhost" ou um interno na rede da UFSC - Universidade Federal de Santa Catarina
+- Um dos jogadores deve iniciar a partida, e este mesmo iniciará jogando.
+- São distribuídas 6 cartas retiradas do monte, formando a mão de cada jogador.
+- Em cada turno, o jogador pode optar por fazer tres ações:
+	- Capturar vilão: Usa cartas da mão do jogador para capturar um vilão. Para executar essa ação, selecione as cartas da sua mão usando a telca CTRL + clique
+	nas cartas de heróis para selecionar os heróis e um clique no vião desejado. Ao fazer isto, uma janela irá perguntar se deseja capturar o vilão ou não.
+	Ao clicar em sim e se o somatório de pontos das cartas das mãos forem maiores do que o do vilão, o vilão vai ser capturado, indo ao lado das cartas da mão do jogador.
+	- Usar joia do poder: Clique duplo em cima das cartas que estão em letra caixa alta. Elas possuem efeitos especiais, cada uma com o seu efeito.
+	- Pular o turno: Pula sua vez de jogada, passando o poder de fazer uma ação para o outro jogador.
+- Ao capturar um vilão ou usar uma joia do poder, o turno do jogador é passado.
+- É vencedor aquele que conseguir ter o maior somátorio de poder das suas cartas vilões capturados e não tiver mais vilões para serem capturados.
+
+==================================================================
+4. Restrições
+==================================================================
+
+- Não é possível comprar mais cartas ao ter apenas um inimigo para ser capturado.
+- A interface gráfica para de mostrar as novas cartas compradas se for usado a JOIA DA REALIDADE e o jogador oponente não possuir no mínimo 3 cartas para serem retiradas ou 
+o jogador usar a JOIA DO TEMPO/JOIA DO ESPAÇO e não tiver mais cartas para serem compradas do baralho.
+
+==================================================================
+5. Melhorias para próximas versões
+==================================================================
+
+- Melhorar a interface gráfica:
+	- Mudar de Strings clicaveis para imagens clicaveis para cada carta do jogo.
+	- Colocar avisos quando for a vez do jogador realizar a sua jogada.
+- Ao a conexão ser perdida ou um jogador se desconectar, reiniciar a interface gráfica.
+- Arrumar o bug de não ser possivel comprar mais cartas ao capturar um inimigo.
+- Arrumar o bug do uso das Joias.
