@@ -67,6 +67,9 @@ public class ControladorJogo {
                     this.getMesa().setPartidaEmAndamento(true);
                 }
             }
+            
+        } else {
+            this.atorJogador.notificarNaoConectado(); //Mudado
         }
     }
 
@@ -284,7 +287,8 @@ public class ControladorJogo {
         }
         
         //Verificar se tem cartars no baralho:
-        int tamanhoMonte = this.mesa.getMonteCompra().tamanhoMonte();
+        Monte monteCompra = this.mesa.getMonteCompra();
+        int tamanhoMonte = monteCompra.tamanhoMonte();
         if (tamanhoMonte == 0) {
             this.mesa.criarMonteDeCompra();
         }

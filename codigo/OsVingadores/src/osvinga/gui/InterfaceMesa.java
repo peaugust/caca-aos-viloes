@@ -614,7 +614,7 @@ public class InterfaceMesa extends javax.swing.JFrame {
     }
 
     public void notificarJogadorVencedor(Jogador aJogadorVencedor) {
-        JOptionPane.showConfirmDialog(this, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!!!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showConfirmDialog(this, "O Jogador Vencedor é " + aJogadorVencedor.getNome() + ". Parabéns!", "Temos um vencedor", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     public void usarJoia(Artefato aCartaJoia) {

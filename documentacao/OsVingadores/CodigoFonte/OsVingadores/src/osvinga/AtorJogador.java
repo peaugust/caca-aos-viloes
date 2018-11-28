@@ -72,7 +72,8 @@ public class AtorJogador {
     }
 
     public void passarTurno() {
-        this.controladorJogo.passarTurno();
+        boolean resultado = this.controladorJogo.passarTurno(); //Mudado
+        this.interfaceMesa.notificarPassarTurno(resultado);
     }
 
     public boolean solicitarConfirmacaoPassarTurno() {

@@ -195,10 +195,6 @@ public class Mesa implements Jogada {
         Collections.shuffle(novoMonteVilao.getCartas());
         this.setMonteVilao(novoMonteVilao);
     }
-    
-    public void addCartaAoMonteDescarte(Carta carta){
-        this.monteDescarte.adicionarCarta(carta);
-    }
 
     void criarMonteDescarte() {
         Monte monteDesc = new Monte();
