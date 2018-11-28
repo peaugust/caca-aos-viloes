@@ -252,18 +252,15 @@ public class ControladorJogo {
                         boolean ehSeuNome = jogadorIteracao.ehSeuNome(this.nomeJogador);
                         if (!ehSeuNome) {
                             cartaAux = jogadorIteracao.removerVilaoAleatoriamente();
-                            //Colocar no diagrama:
                             if (cartaAux == null) {
                                 this.atorJogador.notificarNaoTemVilaoRoubar();
                                 return;
                             }
-                            //
                             jogador.adicionarVilao(cartaAux);
                         }
                     }
                     break;
             }
-            //Colocar no diagrama
             this.atualizarEstadoJogo();
             int index = this.calcularIndexJogador();
             this.atorJogador.atualizarInterface(this.mesa, index);
@@ -371,7 +368,6 @@ public class ControladorJogo {
 
     }
 
-    //Adicionar no diagrama
     public int calcularIndexJogador() {
         ArrayList<Jogador> colJogador = this.mesa.getColecaoJogadores();
         int indexJogador;
