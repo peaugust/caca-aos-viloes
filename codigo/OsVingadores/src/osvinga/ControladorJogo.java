@@ -90,7 +90,6 @@ public class ControladorJogo {
             if (passarTurno) {
                 this.passarTurnoDosJogadores();
                 this.verificarEstadoDoJogo();
-                //Adicionar na modelagem
                 this.enviarJogada(this.mesa);
                 return true;
             }
@@ -134,6 +133,10 @@ public class ControladorJogo {
                 jogador.adicionarVilao(vilao);
                 jogador.retirarConjuntoDaMao(cartasCapturar);
 
+                for (int i = 0; i < cartasCapturar.getCartas().size(); i++) {
+                    this.mesa.getMonteDescarte().adicionarCarta(cartasCapturar.getCartas().get(i));
+                }
+                
                 this.getMesa().removerVilao(vilao);
                 //Colocar no diagrama:
                 this.atualizarEstadoJogo();
@@ -295,7 +298,6 @@ public class ControladorJogo {
                 return;
             }
             monteVilaosAtivos.adicionarCarta(novoVilao);
-            return;
         }
         //Colocar no diagrama:
         //Verificar se tem cartars no baralho:

@@ -512,15 +512,19 @@ public class InterfaceMesa extends javax.swing.JFrame {
                 try {
                     modeloVilao1.add(0, mesa.getMonteVilaosAtivos().getCartas().get(0));
                 } catch (ArrayIndexOutOfBoundsException ex) {
-                    modeloVilao1.add(0, "| Sem Inimigo |");
-                }
+                    modeloVilao1.add(0, new Personagem("Sem Vilão",0,TipoPersonagem.VILAO));
+                } catch (IndexOutOfBoundsException ex ) {
+                    modeloVilao1.add(0, new Personagem("Sem Vilão",0,TipoPersonagem.VILAO));
+                }  
                 InterfaceMesa.this.vilao1.setModel(modeloVilao1);
                 //Atulziar vilao 2:
                 DefaultListModel modeloVilao2 = new DefaultListModel();
                 try {
                     modeloVilao2.add(0, mesa.getMonteVilaosAtivos().getCartas().get(1));
                 } catch (ArrayIndexOutOfBoundsException ex) {
-                    modeloVilao1.add(0, "| Sem Inimigo |");
+                    modeloVilao2.add(0, new Personagem("Sem Vilão",0,TipoPersonagem.VILAO));
+                } catch (IndexOutOfBoundsException ex ) {
+                    modeloVilao2.add(0, new Personagem("Sem Vilão",0,TipoPersonagem.VILAO));
                 }
                 InterfaceMesa.this.vilao2.setModel(modeloVilao2);
                 //Monte de descarte:

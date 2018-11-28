@@ -38,7 +38,12 @@ public class Monte implements Jogada{
     }
 
     public Carta comprarCarta() {
-        return this.cartas.remove(this.cartas.size() - 1);
+        //Colocar no diagrama:
+        if (! (this.cartas.isEmpty()) ) {
+            return this.cartas.remove(this.cartas.size() - 1);
+        }
+        
+        return null;
     }
 
     public void adicionarCarta(Carta carta) {
