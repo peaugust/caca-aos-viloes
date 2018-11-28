@@ -119,7 +119,7 @@ public class ControladorJogo {
     }
 
     public boolean capturarVilao(Monte cartasCapturar, Carta vilao) {
-        //Colocar no diagrama o if e o ehSeuTurno e arrumar o return, antes estava na chave de cima:
+        //Colocar no diagrama o if e o ehSeuTurno e arrumar o return, antes estava na chave de cima: FOI
         boolean resultado = false;
         boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
@@ -140,8 +140,8 @@ public class ControladorJogo {
                 this.getMesa().removerVilao(vilao);
                 //Colocar no diagrama:
                 this.atualizarEstadoJogo();
-                int index = this.calcularIndexJogador();
-                this.atorJogador.atualizarInterface(this.mesa, index);
+                int indexJogador = this.calcularIndexJogador();
+                this.atorJogador.atualizarInterface(this.mesa, indexJogador);
                 this.enviarJogada(this.mesa);
                 //
 
@@ -172,9 +172,8 @@ public class ControladorJogo {
 
     //Importante
     public void receberEstadoDaMesa(Mesa mesa) {
-        this.mesa = mesa;
+        this.setMesa(mesa);
         this.comprarCartaParaJogadorAtivo();
-        //AdicionarNoDiagrama
         int indexJogador = this.calcularIndexJogador();
         this.atorJogador.atualizarInterface(mesa, indexJogador);
         this.verificarEstadoDoJogo();
@@ -198,7 +197,7 @@ public class ControladorJogo {
     }
 
     public void usarJoia(Artefato cartaJoia) {
-        //Botar no diagrama o if + o ehSeuTurno:
+        //Botar no diagrama o if + o ehSeuTurno: FEITO
         boolean ehSeuTurno = this.verificarJogadorDoTurno();
 
         if (ehSeuTurno) {
@@ -395,7 +394,7 @@ public class ControladorJogo {
         } else {
             indexJogador = 1;
         }
-
+        
         return indexJogador;
     }
 }
