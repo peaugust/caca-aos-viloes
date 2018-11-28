@@ -29,6 +29,10 @@ public class Mesa implements Jogada {
         return this.partidaEmAndamento;
     }
 
+    public void setPartidaEmAndamento(boolean partidaEmAndamento) {
+        this.partidaEmAndamento = partidaEmAndamento;
+    }
+
     public ArrayList<Jogador> getColecaoJogadores() {
         return this.jogadores;
     }
